@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 10;
+    public float speed = 10.1f;
     public Rigidbody2D rb;
 
     public Transform groundCheckHB;
