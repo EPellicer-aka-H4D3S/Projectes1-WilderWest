@@ -163,6 +163,9 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        
+        if (Physics2D.OverlapBox(playerController.transform.position, new Vector2(3,3), 0.0f).gameObject.Equals(bison))
+        {
+            
+        }
     }
 }

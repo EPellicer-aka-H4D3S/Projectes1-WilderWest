@@ -764,7 +764,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 0.49
 --- !u!61 &838452325
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -897,6 +897,7 @@ MonoBehaviour:
   speed: 10.1
   rigidBody: {fileID: 838452330}
   boxCollider: {fileID: 838452325}
+  circleCollider: {fileID: 0}
   groundCheckHB: {fileID: 482737989}
   groundLayer:
     serializedVersion: 2
