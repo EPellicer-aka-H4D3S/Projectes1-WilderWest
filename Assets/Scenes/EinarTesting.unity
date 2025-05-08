@@ -1065,8 +1065,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10.1
-  rigidBody: {fileID: 0}
-  boxCollider: {fileID: 0}
+  rigidBody: {fileID: 838452330}
+  boxCollider: {fileID: 838452325}
   groundCheckHB: {fileID: 482737989}
   groundLayer:
     serializedVersion: 2
