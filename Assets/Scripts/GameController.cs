@@ -24,8 +24,8 @@ public class GameController : MonoBehaviour
         NutlessPool = new GameObject[] {null,null,platform,platform};
         Chances = new int[] {26, 51, 76};
         prevP2 = nuts.GetComponent<GameObject>();
-        InvokeRepeating(nameof(PlatformSpawner), 4.0f, 4.0f);
-        InvokeRepeating(nameof(EnemySpawner), 4.0f, 4.0f);
+        InvokeRepeating(nameof(PlatformSpawner), 4.0f, 2.0f);
+        //InvokeRepeating(nameof(EnemySpawner), 4.0f, 2.0f);
     }
     
     void PlatformSpawner()
@@ -117,8 +117,8 @@ public class GameController : MonoBehaviour
                 }
                 catch (Exception) { }
             }
-            prevP1 = CurrentPool[temp];
         }
+        prevP1 = CurrentPool[temp];
     }
 
     void EnemySpawner()
