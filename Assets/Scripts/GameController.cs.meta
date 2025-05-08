@@ -4,9 +4,10 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - nuts: {instanceID: 0}
+  - nuts: {fileID: 5162444189792296491, guid: d7e3692944a20c64e904214fcc883299, type: 3}
   - platform: {fileID: 6009270056072715214, guid: ca879f51e4e8b554eb694de6460b64f9, type: 3}
-  - nplatform: {instanceID: 0}
+  - nplatform: {fileID: 7199402375487525610, guid: 33bd1b4fe61e73b44acbee964df23cb3, type: 3}
+  - bison: {fileID: 253203353484390072, guid: c16f0501639533d458d520f5b76e1593, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

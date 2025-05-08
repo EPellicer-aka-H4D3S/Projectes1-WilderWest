@@ -7,25 +7,34 @@ public class GameController : MonoBehaviour
 {
     private GameObject prevP1 = null;
     private GameObject prevP2;
-    private bool bandit = false;
+    private int bisonCounter;
+    public int bisonCurrent;
+    public bool bandit = false;
 
+    [Header("Prefabs")]
     public GameObject nuts;
     public GameObject platform;
     public GameObject nplatform;
+    public GameObject bison;
 
     private GameObject[] CurrentPool;
     private int[] Chances;
     private GameObject[] BasicPool;
     private GameObject[] NutlessPool;
+    public PlayerController playerController;
 
     void Start()
     {
         BasicPool = new GameObject[] {null,nuts,platform,nplatform};
         NutlessPool = new GameObject[] {null,null,platform,platform};
         Chances = new int[] {26, 51, 76};
+        bisonCounter = UnityEngine.Random.Range(4, 8);
+        bisonCurrent = bisonCounter;
+
         prevP2 = nuts.GetComponent<GameObject>();
+
         InvokeRepeating(nameof(PlatformSpawner), 4.0f, 2.0f);
-        //InvokeRepeating(nameof(EnemySpawner), 4.0f, 2.0f);
+        InvokeRepeating(nameof(EnemySpawner), 10.0f, 4.0f);
     }
     
     void PlatformSpawner()
@@ -123,7 +132,33 @@ public class GameController : MonoBehaviour
 
     void EnemySpawner()
     {
-
+        if (!bandit)
+        {
+            if (bisonCurrent > 0)
+            {
+                if (playerController.transform.position.y < -1.5f)
+                {
+                    bisonCurrent--;
+                    Instantiate(bison, new Vector3(20, -4.5f, 0), Quaternion.identity);
+                }
+                else if (playerController.transform.position.y < 3.5f && !((prevP1 == null || prevP1.Equals(nuts))))
+                {
+                    bisonCurrent--;
+                    Instantiate(bison, new Vector3(20, 0.5f, 0), Quaternion.identity);
+                }
+                else if(!(prevP2 == null || prevP2.Equals(nuts)))
+                {
+                    bisonCurrent--;
+                    Instantiate(bison, new Vector3(20, 5.5f, 0), Quaternion.identity);
+                }
+            }
+            else
+            {
+                bisonCounter = UnityEngine.Random.Range(4, 8);
+                bisonCurrent = bisonCounter;
+                Debug.Log("Bandit Spawn");
+            }
+        }
     }
 
     void Update()
