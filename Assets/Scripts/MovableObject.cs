@@ -7,7 +7,7 @@ public class MovableObject : MonoBehaviour
 
     void Start()
     {
-        renderer = GetComponent<SpriteRenderer>();
+        renderer = GetComponentInChildren<Renderer>();
     }
 
     void Update()
