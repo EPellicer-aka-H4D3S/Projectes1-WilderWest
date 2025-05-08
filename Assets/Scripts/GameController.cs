@@ -1,3 +1,4 @@
+using System;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -5,7 +6,7 @@ using UnityEngine.UIElements;
 public class GameController : MonoBehaviour
 {
     private GameObject prevP1 = null;
-    private GameObject prevP2 = null;
+    private GameObject prevP2;
     private bool bandit = false;
 
     public GameObject nuts;
@@ -13,7 +14,7 @@ public class GameController : MonoBehaviour
     public GameObject nplatform;
 
     private GameObject[] CurrentPool;
-    private int[] chances;
+    private int[] Chances;
     private GameObject[] BasicPool;
     private GameObject[] NutlessPool;
 
@@ -21,7 +22,8 @@ public class GameController : MonoBehaviour
     {
         BasicPool = new GameObject[] {null,nuts,platform,nplatform};
         NutlessPool = new GameObject[] {null,null,platform,platform};
-        chances = new int[] {26, 51, 76};
+        Chances = new int[] {26, 51, 76};
+        prevP2 = nuts.GetComponent<GameObject>();
         InvokeRepeating(nameof(PlatformSpawner), 4.0f, 4.0f);
         InvokeRepeating(nameof(EnemySpawner), 4.0f, 4.0f);
     }
@@ -39,50 +41,80 @@ public class GameController : MonoBehaviour
         }
 
         //P1 Spawn Logic
-        int rnd = Random.Range(0, 101);
-        if (rnd < chances[1])
+        int rnd = UnityEngine.Random.Range(0, 101);
+        if (rnd < Chances[0])
+        {
+            prevP1 = CurrentPool[0];
+            try
+            {
+                Instantiate(CurrentPool[0], new Vector3(20, -1.5f, 0), Quaternion.identity);
+            }
+            catch (Exception) { }
+        }
+        else if (rnd < Chances[1])
         {
             prevP1 = CurrentPool[1];
-            Instantiate(CurrentPool[1], new Vector3(20, -1.5f, 0), Quaternion.identity);
+            try
+            {
+                Instantiate(CurrentPool[1], new Vector3(20, -1.5f, 0), Quaternion.identity);
+            }
+            catch (Exception) { }
         }
-        else if (rnd < chances[2])
+        else if (rnd < Chances[2])
         {
             prevP1 = CurrentPool[2];
-            Instantiate(CurrentPool[2], new Vector3(20, -1.5f, 0), Quaternion.identity);
-        }
-        else if (rnd < chances[3])
-        {
-            prevP1 = CurrentPool[3];
-            Instantiate(CurrentPool[3], new Vector3(20, -1.5f, 0), Quaternion.identity);
+            try
+            {
+                Instantiate(CurrentPool[2], new Vector3(20, -1.5f, 0), Quaternion.identity);
+            }
+            catch (Exception) { }
         }
         else {
-            prevP1 = CurrentPool[4];
-            Instantiate(CurrentPool[4], new Vector3(20, -1.5f, 0), Quaternion.identity);
+            prevP1 = CurrentPool[3];
+            try
+            {
+                Instantiate(CurrentPool[3], new Vector3(20, -1.5f, 0), Quaternion.identity);
+            }
+            catch (Exception) { }
         }
 
         //P2 Spawn Logic
-        rnd = Random.Range(0, 101);
+        rnd = UnityEngine.Random.Range(0, 101);
         if (prevP1.Equals(platform)|| prevP1.Equals(nplatform) || prevP2.Equals(platform) || prevP2.Equals(nplatform))
         {
-            if (rnd < chances[1])
+            if (rnd < Chances[0])
+            {
+                prevP2 = CurrentPool[0];
+                try {
+                    Instantiate(CurrentPool[0], new Vector3(20, 3.5f, 0), Quaternion.identity);
+                } catch (Exception) { }
+            }
+            else if (rnd < Chances[1])
             {
                 prevP2 = CurrentPool[1];
-                Instantiate(CurrentPool[1], new Vector3(20, 3.5f, 0), Quaternion.identity);
+                try
+                {
+                    Instantiate(CurrentPool[1], new Vector3(20, 3.5f, 0), Quaternion.identity);
+                }
+                catch (Exception) { }
             }
-            else if (rnd < chances[2])
+            else if (rnd < Chances[2])
             {
                 prevP2 = CurrentPool[2];
-                Instantiate(CurrentPool[2], new Vector3(20, 3.5f, 0), Quaternion.identity);
-            }
-            else if (rnd < chances[3])
-            {
-                prevP2 = CurrentPool[3];
-                Instantiate(CurrentPool[3], new Vector3(20, 3.5f, 0), Quaternion.identity);
+                try
+                {
+                    Instantiate(CurrentPool[2], new Vector3(20, 3.5f, 0), Quaternion.identity);
+                }
+                catch (Exception) { }
             }
             else
             {
-                prevP2 = CurrentPool[4];
-                Instantiate(CurrentPool[4], new Vector3(20, 3.5f, 0), Quaternion.identity);
+                prevP2 = CurrentPool[3];
+                try
+                {
+                    Instantiate(CurrentPool[4], new Vector3(20, 3.5f, 0), Quaternion.identity);
+                }
+                catch (Exception) { }
             }
         }
     }
