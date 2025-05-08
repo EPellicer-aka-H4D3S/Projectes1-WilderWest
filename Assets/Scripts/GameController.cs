@@ -42,9 +42,10 @@ public class GameController : MonoBehaviour
 
         //P1 Spawn Logic
         int rnd = UnityEngine.Random.Range(0, 101);
+        int temp;
         if (rnd < Chances[0])
         {
-            prevP1 = CurrentPool[0];
+            temp = 0;
             try
             {
                 Instantiate(CurrentPool[0], new Vector3(20, -1.5f, 0), Quaternion.identity);
@@ -53,7 +54,7 @@ public class GameController : MonoBehaviour
         }
         else if (rnd < Chances[1])
         {
-            prevP1 = CurrentPool[1];
+            temp = 1;
             try
             {
                 Instantiate(CurrentPool[1], new Vector3(20, -1.5f, 0), Quaternion.identity);
@@ -62,7 +63,7 @@ public class GameController : MonoBehaviour
         }
         else if (rnd < Chances[2])
         {
-            prevP1 = CurrentPool[2];
+            temp = 2;
             try
             {
                 Instantiate(CurrentPool[2], new Vector3(20, -1.5f, 0), Quaternion.identity);
@@ -70,7 +71,7 @@ public class GameController : MonoBehaviour
             catch (Exception) { }
         }
         else {
-            prevP1 = CurrentPool[3];
+            temp = 3;
             try
             {
                 Instantiate(CurrentPool[3], new Vector3(20, -1.5f, 0), Quaternion.identity);
@@ -80,7 +81,7 @@ public class GameController : MonoBehaviour
 
         //P2 Spawn Logic
         rnd = UnityEngine.Random.Range(0, 101);
-        if (prevP1.Equals(platform)|| prevP1.Equals(nplatform) || prevP2.Equals(platform) || prevP2.Equals(nplatform))
+        if (!((prevP1==null || prevP1.Equals(nuts)) && (prevP2 == null || prevP2.Equals(nuts))))
         {
             if (rnd < Chances[0])
             {
@@ -116,6 +117,7 @@ public class GameController : MonoBehaviour
                 }
                 catch (Exception) { }
             }
+            prevP1 = CurrentPool[temp];
         }
     }
 

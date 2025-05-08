@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MovableObject : MonoBehaviour
 {
-    private Renderer renderer;
+    private new Renderer renderer;
     public float speed;
 
     void Start()
