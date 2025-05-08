@@ -33,7 +33,7 @@ public class GameController : MonoBehaviour
 
         prevP2 = nuts.GetComponent<GameObject>();
 
-        InvokeRepeating(nameof(PlatformSpawner), 4.0f, 2.0f);
+        InvokeRepeating(nameof(PlatformSpawner), 4.0f, 1.6f);
         InvokeRepeating(nameof(EnemySpawner), 10.0f, 4.0f);
     }
     

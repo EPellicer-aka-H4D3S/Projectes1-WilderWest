@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3995022305206937515}
   - component: {fileID: 8042255972601150899}
-  - component: {fileID: 4158048424334496224}
   m_Layer: 0
   m_Name: Nut
   m_TagString: Untagged
@@ -88,16 +87,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4158048424334496224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 448756185938442579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c58224cb2f0f0a448b1dd31d5038c4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 4

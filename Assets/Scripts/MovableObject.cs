@@ -15,7 +15,7 @@ public class MovableObject : MonoBehaviour
         transform.position = transform.position + speed * Time.deltaTime * new Vector3(-1,0,0);
         if (!renderer.isVisible && transform.position.x<0)
         {
-            Destroy(gameObject);
+            Destroy(gameObject,1.0f);
         }
     }
 }
