@@ -295,13 +295,20 @@ public class GameController : MonoBehaviour
 
     public void KillPlayer()
     {
-        Debug.Log("You died");
+        if (score > 0)
+        {
+            Time.timeScale = 0.0f;
+        }
+        else
+        {
+            score = score - 30;
+        }
     }
 
     public void Accelerate()
     {
         banditActive = false;
-        if (Time.timeScale < 2.6f)
+        if (Time.timeScale < 3.0f)
         {
             Time.timeScale = Time.timeScale + 0.2f;
         }
