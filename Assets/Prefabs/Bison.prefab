@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 6773711229960199129}
   - component: {fileID: 522035539771109631}
   - component: {fileID: 5924343754849474663}
+  - component: {fileID: -9204098776822678575}
   - component: {fileID: 3045061204112027250}
-  - component: {fileID: 7641222932316281230}
+  - component: {fileID: -3185713392459891443}
   m_Layer: 0
   m_Name: Bison
   m_TagString: Untagged
@@ -136,6 +137,42 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!58 &-9204098776822678575
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253203353484390072}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.5
 --- !u!50 &3045061204112027250
 Rigidbody2D:
   serializedVersion: 5
@@ -163,7 +200,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7641222932316281230
+--- !u!114 &-3185713392459891443
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,7 +209,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 253203353484390072}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c58224cb2f0f0a448b1dd31d5038c4f, type: 3}
+  m_Script: {fileID: 11500000, guid: c2fd5d5a1761ad44aad79c55c5d62048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  KillPlayer:
+    m_PersistentCalls:
+      m_Calls: []

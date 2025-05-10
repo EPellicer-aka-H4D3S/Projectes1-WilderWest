@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 199539200}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -241,6 +241,7 @@ MonoBehaviour:
   nplatform: {fileID: 7199402375487525610, guid: 33bd1b4fe61e73b44acbee964df23cb3, type: 3}
   bison: {fileID: 253203353484390072, guid: c16f0501639533d458d520f5b76e1593, type: 3}
   playerController: {fileID: 838452329}
+  scoreDisplay: {fileID: 627302723}
 --- !u!1 &482737988
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,7 +630,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: NutCounter
+  m_text: x0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
@@ -720,51 +721,14 @@ GameObject:
   - component: {fileID: 838452326}
   - component: {fileID: 838452330}
   - component: {fileID: 838452325}
-  - component: {fileID: 838452324}
   - component: {fileID: 838452329}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!58 &838452324
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 838452323}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.49
 --- !u!61 &838452325
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -897,7 +861,6 @@ MonoBehaviour:
   speed: 10.1
   rigidBody: {fileID: 838452330}
   boxCollider: {fileID: 838452325}
-  circleCollider: {fileID: 0}
   groundCheckHB: {fileID: 482737989}
   groundLayer:
     serializedVersion: 2

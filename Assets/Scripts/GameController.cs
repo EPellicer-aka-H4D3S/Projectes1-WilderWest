@@ -2,6 +2,7 @@ using System;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
+using TMPro;
 
 public class GameController : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class GameController : MonoBehaviour
     private int bisonCounter;
     public int bisonCurrent;
     public bool bandit = false;
+    private int score = 0;
 
     [Header("Prefabs")]
     public GameObject nuts;
@@ -21,7 +23,8 @@ public class GameController : MonoBehaviour
     private int[] Chances;
     private GameObject[] BasicPool;
     private GameObject[] NutlessPool;
-    public PlayerController playerController;
+    [SerializeField] private PlayerController playerController;
+    [SerializeField] private TextMeshProUGUI scoreDisplay;
 
     void Start()
     {
@@ -161,11 +164,19 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public void KillPlayer()
+    {
+        Debug.Log("You died");
+    }
+
+    public void UpdateScore()
+    {
+        score++;
+        scoreDisplay.text = "x" + score.ToString();
+    }
+
     void Update()
     {
-        if (Physics2D.OverlapBox(playerController.transform.position, new Vector2(3,3), 0.0f).gameObject.Equals(bison))
-        {
-            
-        }
+
     }
 }
