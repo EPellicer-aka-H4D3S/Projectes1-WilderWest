@@ -9,15 +9,18 @@ public class GameController : MonoBehaviour
     private GameObject prevP1 = null;
     private GameObject prevP2;
     private int bisonCounter;
-    public int bisonCurrent;
-    public bool bandit = false;
+    private int bisonCurrent;
+    private bool bandit = false;
+    private bool cactusSpawn = true;
     private int score = 0;
+
 
     [Header("Prefabs")]
     public GameObject nuts;
     public GameObject platform;
     public GameObject nplatform;
     public GameObject bison;
+    public GameObject cactus;
 
     private GameObject[] CurrentPool;
     private int[] Chances;
@@ -38,6 +41,7 @@ public class GameController : MonoBehaviour
 
         InvokeRepeating(nameof(PlatformSpawner), 4.0f, 1.6f);
         InvokeRepeating(nameof(EnemySpawner), 10.0f, 4.0f);
+        InvokeRepeating(nameof(CactusSpawner), 4.0f, 1.6f);
     }
     
     void PlatformSpawner()
@@ -162,6 +166,115 @@ public class GameController : MonoBehaviour
                 Debug.Log("Bandit Spawn");
             }
         }
+    }
+
+    void CactusSpawner()
+    {
+        if (cactusSpawn)
+        {
+            cactusSpawn = !cactusSpawn;
+            if (!(prevP1 == null || prevP1.Equals(nuts) || prevP1.Equals(nplatform)) && !(prevP2 == null || prevP2.Equals(nuts) || prevP2.Equals(nplatform)))
+            {
+                int rnd = UnityEngine.Random.Range(0, 10);
+                switch (rnd)
+                {
+                    case 1:
+                        Instantiate(cactus, new Vector3(18, 5f, 0), Quaternion.identity);
+                        break;
+                    case 2:
+                        Instantiate(cactus, new Vector3(20, 5f, 0), Quaternion.identity);
+                        break;
+                    case 3:
+                        Instantiate(cactus, new Vector3(22, 5f, 0), Quaternion.identity);
+                        break;
+                    case 4:
+                        Instantiate(cactus, new Vector3(18, 0f, 0), Quaternion.identity);
+                        break;
+                    case 5:
+                        Instantiate(cactus, new Vector3(20, 0f, 0), Quaternion.identity);
+                        break;
+                    case 6:
+                        Instantiate(cactus, new Vector3(22, 0f, 0), Quaternion.identity);
+                        break;
+                    case 7:
+                        Instantiate(cactus, new Vector3(18, -5f, 0), Quaternion.identity);
+                        break;
+                    case 8:
+                        Instantiate(cactus, new Vector3(20, -5f, 0), Quaternion.identity);
+                        break;
+                    case 9:
+                        Instantiate(cactus, new Vector3(22, -5f, 0), Quaternion.identity);
+                        break;
+                }
+            }
+
+            else if (!((prevP1 == null || prevP1.Equals(nuts) || prevP1.Equals(nplatform))))
+            {
+                int rnd = UnityEngine.Random.Range(0, 7);
+                switch (rnd)
+                {
+                    case 1:
+                        Instantiate(cactus, new Vector3(18, 0f, 0), Quaternion.identity);
+                        break;
+                    case 2:
+                        Instantiate(cactus, new Vector3(20, 0f, 0), Quaternion.identity);
+                        break;
+                    case 3:
+                        Instantiate(cactus, new Vector3(22, 0f, 0), Quaternion.identity);
+                        break;
+                    case 4:
+                        Instantiate(cactus, new Vector3(18, -5f, 0), Quaternion.identity);
+                        break;
+                    case 5:
+                        Instantiate(cactus, new Vector3(20, -5f, 0), Quaternion.identity);
+                        break;
+                    case 6:
+                        Instantiate(cactus, new Vector3(22, -5f, 0), Quaternion.identity);
+                        break;
+                }
+            }
+            else if (!((prevP2 == null || prevP2.Equals(nuts) || prevP2.Equals(nplatform))))
+            {
+                int rnd = UnityEngine.Random.Range(0, 7);
+                switch (rnd)
+                {
+                    case 1:
+                        Instantiate(cactus, new Vector3(18, 5f, 0), Quaternion.identity);
+                        break;
+                    case 2:
+                        Instantiate(cactus, new Vector3(20, 5f, 0), Quaternion.identity);
+                        break;
+                    case 3:
+                        Instantiate(cactus, new Vector3(22, 5f, 0), Quaternion.identity);
+                        break;
+                    case 4:
+                        Instantiate(cactus, new Vector3(18, -5f, 0), Quaternion.identity);
+                        break;
+                    case 5:
+                        Instantiate(cactus, new Vector3(20, -5f, 0), Quaternion.identity);
+                        break;
+                    case 6:
+                        Instantiate(cactus, new Vector3(22, -5f, 0), Quaternion.identity);
+                        break;
+                }
+            }
+            else
+            {
+                int rnd = UnityEngine.Random.Range(0, 4);
+                switch (rnd)
+                {
+                    case 1:
+                        Instantiate(cactus, new Vector3(18, -5f, 0), Quaternion.identity);
+                        break;
+                    case 2:
+                        Instantiate(cactus, new Vector3(20, -5f, 0), Quaternion.identity);
+                        break;
+                    case 3:
+                        Instantiate(cactus, new Vector3(22, -5f, 0), Quaternion.identity);
+                        break;
+                }
+            }
+        }else cactusSpawn = !cactusSpawn;
     }
 
     public void KillPlayer()

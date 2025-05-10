@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 10.1f;
     public Rigidbody2D rigidBody;
-    public BoxCollider2D boxCollider;
+    public CircleCollider2D circleCollider;
 
     public Transform groundCheckHB;
     private Vector2 groundCheckSize = new Vector2(0.5f, 0.05f);
@@ -14,18 +14,22 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
-        boxCollider = GetComponent<BoxCollider2D>();
+        circleCollider = GetComponent<CircleCollider2D>();
     }
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.W) && IsGrounded() && rigidBody.linearVelocity == new Vector2(0, 0))
+        if (Input.GetKey(KeyCode.W) && IsGrounded() && rigidBody.linearVelocity == Vector2.zero)
         {
             Jump();
         }
-        if (Input.GetKeyDown(KeyCode.S) && transform.position.y>-3.5f && rigidBody.linearVelocity==new Vector2(0,0))
+        if (Input.GetKey(KeyCode.S) && transform.position.y>-3.5f && rigidBody.linearVelocity == Vector2.zero)
         {
             Drop();
+        }
+        if (Input.GetKey(KeyCode.D) && rigidBody.linearVelocity == Vector2.zero)
+        {
+            //Attack
         }
     }
 
@@ -50,9 +54,9 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator DisableCollider(float timer)
     {
-        boxCollider.isTrigger=true;
+        circleCollider.isTrigger=true;
         yield return new WaitForSeconds(timer);
-        boxCollider.isTrigger = false;
+        circleCollider.isTrigger = false;
     }
 
     private void OnDrawGizmosSelected()
