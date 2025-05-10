@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,9 +12,12 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheckHB;
     private Vector2 groundCheckSize = new Vector2(0.5f, 0.05f);
     public LayerMask groundLayer;
-    
+
+    public UnityEvent Attack;
+
     void Start()
     {
+        InvokeRepeating(nameof(AttackListener), 0.0f, 1.0f);
         rigidBody = GetComponent<Rigidbody2D>();
         circleCollider = GetComponent<CircleCollider2D>();
     }
@@ -29,7 +34,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.D) && rigidBody.linearVelocity == Vector2.zero)
         {
-            //Attack
+            Attack.Invoke();
         }
     }
 
@@ -40,7 +45,7 @@ public class PlayerController : MonoBehaviour
 
     void Drop()
     {
-        StartCoroutine(DisableCollider(1f));
+        StartCoroutine(DisableCollider(0.8f));
     }
 
     private bool IsGrounded()
@@ -57,6 +62,14 @@ public class PlayerController : MonoBehaviour
         circleCollider.isTrigger=true;
         yield return new WaitForSeconds(timer);
         circleCollider.isTrigger = false;
+    }
+
+    void AttackListener()
+    {
+        try { 
+        Attack.AddListener(GameObject.FindGameObjectWithTag("Dynamite").GetComponent<Dynamite>().GetHit);
+        }
+        catch (Exception) { }
     }
 
     private void OnDrawGizmosSelected()

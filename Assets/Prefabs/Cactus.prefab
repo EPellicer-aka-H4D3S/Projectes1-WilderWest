@@ -123,7 +123,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.2}
   m_Radius: 0.5
 --- !u!114 &3262743144248801377
 MonoBehaviour:
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2fd5d5a1761ad44aad79c55c5d62048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 8
   KillPlayer:
     m_PersistentCalls:
       m_Calls: []

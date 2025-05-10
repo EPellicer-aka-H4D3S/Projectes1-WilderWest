@@ -238,6 +238,7 @@ MonoBehaviour:
   platform: {fileID: 6009270056072715214, guid: ca879f51e4e8b554eb694de6460b64f9, type: 3}
   nplatform: {fileID: 7199402375487525610, guid: 33bd1b4fe61e73b44acbee964df23cb3, type: 3}
   bison: {fileID: 253203353484390072, guid: c16f0501639533d458d520f5b76e1593, type: 3}
+  bandit: {fileID: 253203353484390072, guid: 0251a87c8747d294782c50e095d20898, type: 3}
   cactus: {fileID: 448756185938442579, guid: bd39c3939d79c974fb9d5fb22e7a2e50, type: 3}
   playerController: {fileID: 838452329}
   scoreDisplay: {fileID: 627302723}
@@ -811,13 +812,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d12b66779c3206e4d9c784b1e2a40dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10.1
+  speed: 14.4
   rigidBody: {fileID: 838452330}
   circleCollider: {fileID: 838452331}
   groundCheckHB: {fileID: 482737989}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  Attack:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!50 &838452330
 Rigidbody2D:
   serializedVersion: 5
@@ -829,11 +833,11 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
+  m_UseAutoMass: 1
+  m_Mass: 7.0685835
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 6200000, guid: c8c7d5130c4554d45909bb3a0fe1d961, type: 2}
   m_IncludeLayers:
     serializedVersion: 2

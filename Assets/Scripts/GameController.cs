@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour
     private GameObject prevP2;
     private int bisonCounter;
     private int bisonCurrent;
-    private bool bandit = false;
+    private bool banditActive = false;
     private bool cactusSpawn = true;
     private int score = 0;
 
@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour
     public GameObject platform;
     public GameObject nplatform;
     public GameObject bison;
+    public GameObject bandit;
     public GameObject cactus;
 
     private GameObject[] CurrentPool;
@@ -39,15 +40,15 @@ public class GameController : MonoBehaviour
 
         prevP2 = nuts.GetComponent<GameObject>();
 
-        InvokeRepeating(nameof(PlatformSpawner), 4.0f, 1.6f);
+        InvokeRepeating(nameof(PlatformSpawner), 4.0f, 1.0f);
         InvokeRepeating(nameof(EnemySpawner), 10.0f, 4.0f);
-        InvokeRepeating(nameof(CactusSpawner), 4.0f, 1.6f);
+        InvokeRepeating(nameof(CactusSpawner), 4.0f, 1.0f);
     }
     
     void PlatformSpawner()
     {
         //Bandit pool swap
-        if (bandit)
+        if (banditActive)
         {
             CurrentPool = NutlessPool;
         }
@@ -139,31 +140,46 @@ public class GameController : MonoBehaviour
 
     void EnemySpawner()
     {
-        if (!bandit)
+        if (!banditActive)
         {
             if (bisonCurrent > 0)
             {
-                if (playerController.transform.position.y < -1.5f)
+                if (playerController.transform.position.y > 5f && !(prevP2 == null || prevP2.Equals(nuts)))
                 {
                     bisonCurrent--;
-                    Instantiate(bison, new Vector3(20, -4.5f, 0), Quaternion.identity);
+                    Instantiate(bison, new Vector3(20, 5.5f, 0), Quaternion.identity);
                 }
-                else if (playerController.transform.position.y < 3.5f && !((prevP1 == null || prevP1.Equals(nuts))))
+                else if (playerController.transform.position.y > 0f && !((prevP1 == null || prevP1.Equals(nuts))))
                 {
                     bisonCurrent--;
                     Instantiate(bison, new Vector3(20, 0.5f, 0), Quaternion.identity);
                 }
-                else if(!(prevP2 == null || prevP2.Equals(nuts)))
+                else
                 {
                     bisonCurrent--;
-                    Instantiate(bison, new Vector3(20, 5.5f, 0), Quaternion.identity);
+                    Instantiate(bison, new Vector3(20, -4.5f, 0), Quaternion.identity);
                 }
             }
             else
             {
                 bisonCounter = UnityEngine.Random.Range(4, 8);
                 bisonCurrent = bisonCounter;
-                Debug.Log("Bandit Spawn");
+                banditActive = true;
+                if (playerController.transform.position.y > 5f && !(prevP2 == null || prevP2.Equals(nuts)))
+                {
+                    bisonCurrent--;
+                    Instantiate(bandit, new Vector3(20, 5.5f, 0), Quaternion.identity);
+                }
+                else if (playerController.transform.position.y > 0f && !((prevP1 == null || prevP1.Equals(nuts))))
+                {
+                    bisonCurrent--;
+                    Instantiate(bandit, new Vector3(20, 0.5f, 0), Quaternion.identity);
+                }
+                else
+                {
+                    bisonCurrent--;
+                    Instantiate(bandit, new Vector3(20, -4.5f, 0), Quaternion.identity);
+                }
             }
         }
     }
@@ -280,6 +296,15 @@ public class GameController : MonoBehaviour
     public void KillPlayer()
     {
         Debug.Log("You died");
+    }
+
+    public void Accelerate()
+    {
+        banditActive = false;
+        if (Time.timeScale < 2.6f)
+        {
+            Time.timeScale = Time.timeScale + 0.2f;
+        }
     }
 
     public void UpdateScore()
