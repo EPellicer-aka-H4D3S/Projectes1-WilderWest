@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bandit
   - Dynamite
+  - Audio
   layers:
   - Default
   - TransparentFX
