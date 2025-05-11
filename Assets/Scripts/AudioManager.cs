@@ -11,4 +11,14 @@ public class AudioManager : MonoBehaviour
     public AudioClip hit;
     public AudioClip death;
 
+    private void Start()
+    {
+        MusicSource.clip = music;
+        MusicSource.Play();
+    }
+
+    public void playEffect(AudioClip clip)
+    {
+        EffectSource.PlayOneShot(clip);
+    }
 }

@@ -13,13 +13,18 @@ public class PlayerController : MonoBehaviour
     private Vector2 groundCheckSize = new Vector2(0.5f, 0.05f);
     public LayerMask groundLayer;
 
+    AudioManager audioManager;
+
     public UnityEvent Attack;
+
 
     void Start()
     {
         InvokeRepeating(nameof(AttackListener), 0.0f, 1.0f);
         rigidBody = GetComponent<Rigidbody2D>();
         circleCollider = GetComponent<CircleCollider2D>();
+
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     void Update()
@@ -41,6 +46,7 @@ public class PlayerController : MonoBehaviour
     void Jump()
     {
         rigidBody.linearVelocity = new Vector3(0,speed,0);
+        audioManager.playEffect(audioManager.jump);
     }
 
     void Drop()
