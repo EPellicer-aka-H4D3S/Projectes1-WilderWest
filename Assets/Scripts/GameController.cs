@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
     private bool banditActive = false;
     private bool cactusSpawn = true;
     private int score = 0;
-
+    private bool isAlive = true;
 
     [Header("Prefabs")]
     public GameObject nuts;
@@ -29,6 +29,7 @@ public class GameController : MonoBehaviour
     private GameObject[] NutlessPool;
     [SerializeField] private PlayerController playerController;
     [SerializeField] private TextMeshProUGUI scoreDisplay;
+    public DeathMenu deathMenu;
 
     void Start()
     {
@@ -295,9 +296,12 @@ public class GameController : MonoBehaviour
 
     public void KillPlayer()
     {
-        if (score > 0)
+        if (score > 0 && isAlive)
         {
+            isAlive = false;
             Time.timeScale = 0.0f;
+            deathMenu.toggleDeathUI();
+
         }
         else
         {
