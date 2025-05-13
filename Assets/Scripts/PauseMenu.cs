@@ -4,6 +4,7 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
     public static bool isPaused = false;
+    private float currentTime;
 
     public GameObject pauseUI;
     void Update()
@@ -19,17 +20,16 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         pauseUI.SetActive(false);
-        Time.timeScale = 1.0f;
+        Time.timeScale = currentTime;
         isPaused = false;
     }
 
     public void Pause()
     {
-    
+        currentTime = Time.timeScale;
         pauseUI.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
-
     }
 
     public void Quit()

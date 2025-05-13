@@ -29,8 +29,8 @@ public class GameController : MonoBehaviour
     private GameObject[] NutlessPool;
     [SerializeField] private PlayerController playerController;
     [SerializeField] private TextMeshProUGUI scoreDisplay;
-     DeathMenu deathMenu;
-    AudioManager audioManager;
+    private DeathMenu deathMenu;
+    private AudioManager audioManager;
 
     void Start()
     {
@@ -40,6 +40,7 @@ public class GameController : MonoBehaviour
         bisonCounter = UnityEngine.Random.Range(4, 8);
         bisonCurrent = bisonCounter;
 
+        deathMenu = gameObject.GetComponent<DeathMenu>();
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 
         prevP2 = nuts.GetComponent<GameObject>();
