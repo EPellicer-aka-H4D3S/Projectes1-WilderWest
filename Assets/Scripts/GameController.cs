@@ -299,7 +299,7 @@ public class GameController : MonoBehaviour
 
     public void KillPlayer()
     {
-        if (score > 0)
+        if (score >= 0)
         {
             score = score - 30;
             audioManager.playEffect(audioManager.hit);
