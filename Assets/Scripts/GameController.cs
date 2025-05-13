@@ -13,7 +13,6 @@ public class GameController : MonoBehaviour
     private bool banditActive = false;
     private bool cactusSpawn = true;
     private int score = 0;
-    private bool isAlive = true;
 
     [Header("Prefabs")]
     public GameObject nuts;
@@ -300,18 +299,17 @@ public class GameController : MonoBehaviour
 
     public void KillPlayer()
     {
-        if (score > 0 && isAlive)
-        {
-            isAlive = false;
-            Time.timeScale = 0.0f;
-            audioManager.playEffect(audioManager.death);
-            deathMenu.toggleDeathUI();
-
-        }
-        else
+        if (score > 0)
         {
             score = score - 30;
             audioManager.playEffect(audioManager.hit);
+        }
+        if (score < 0)
+        {
+            Debug.Log("ded");
+            Time.timeScale = 0.0f;
+            audioManager.playEffect(audioManager.death);
+            deathMenu.toggleDeathUI();
         }
     }
 
