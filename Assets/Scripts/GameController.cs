@@ -51,16 +51,6 @@ public class GameController : MonoBehaviour
     
     void PlatformSpawner()
     {
-        //Bandit pool swap
-        if (banditActive)
-        {
-            CurrentPool = NutlessPool;
-        }
-        else
-        {
-            CurrentPool = BasicPool;
-        }
-
         //P1 Spawn Logic
         int rnd = UnityEngine.Random.Range(0, 101);
         int temp;
@@ -303,6 +293,7 @@ public class GameController : MonoBehaviour
         {
             score = score - 30;
             audioManager.playEffect(audioManager.hit);
+            scoreDisplay.text = "x" + score.ToString();
         }
         if (score < 0)
         {
@@ -330,6 +321,14 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-
+        //Bandit pool swap
+        if (banditActive)
+        {
+            CurrentPool = NutlessPool;
+        }
+        else
+        {
+            CurrentPool = BasicPool;
+        }
     }
 }
