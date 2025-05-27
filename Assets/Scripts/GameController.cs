@@ -181,7 +181,6 @@ public class GameController : MonoBehaviour
     {
         if (cactusSpawn)
         {
-            cactusSpawn = !cactusSpawn;
             if (!(prevP1 == null || prevP1.Equals(nuts) || prevP1.Equals(nplatform)) && !(prevP2 == null || prevP2.Equals(nuts) || prevP2.Equals(nplatform)))
             {
                 int rnd = UnityEngine.Random.Range(0, 10);
@@ -283,7 +282,8 @@ public class GameController : MonoBehaviour
                         break;
                 }
             }
-        }else cactusSpawn = !cactusSpawn;
+        }
+        cactusSpawn = !cactusSpawn;
     }
 
     public void KillPlayer()
