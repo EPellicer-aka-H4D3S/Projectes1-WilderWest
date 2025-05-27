@@ -138,6 +138,7 @@ public class GameController : MonoBehaviour
         {
             if (bisonCurrent > 0)
             {
+                //Spawn bison
                 if (playerController.transform.position.y > 5f && !(prevP2 == null || prevP2.Equals(nuts)))
                 {
                     bisonCurrent--;
@@ -156,22 +157,20 @@ public class GameController : MonoBehaviour
             }
             else
             {
+                //Spawn bandit
                 bisonCounter = UnityEngine.Random.Range(4, 8);
                 bisonCurrent = bisonCounter;
                 banditActive = true;
                 if (playerController.transform.position.y > 5f && !(prevP2 == null || prevP2.Equals(nuts)))
                 {
-                    bisonCurrent--;
                     Instantiate(bandit, new Vector3(20, 5.5f, 0), Quaternion.identity);
                 }
                 else if (playerController.transform.position.y > 0f && !((prevP1 == null || prevP1.Equals(nuts))))
                 {
-                    bisonCurrent--;
                     Instantiate(bandit, new Vector3(20, 0.5f, 0), Quaternion.identity);
                 }
                 else
                 {
-                    bisonCurrent--;
                     Instantiate(bandit, new Vector3(20, -4.5f, 0), Quaternion.identity);
                 }
             }
