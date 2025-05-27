@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
 
     void Drop()
     {
-        StartCoroutine(DisableCollider(0.8f));
+        StartCoroutine(DisableCollider(0.7f));
     }
 
     private bool IsGrounded()
