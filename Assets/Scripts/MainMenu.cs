@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 
     public void start()
     {
-        SceneManager.LoadScene("NiccoTesting");
+        SceneManager.LoadScene(1);
     }
 
     public void Quit()

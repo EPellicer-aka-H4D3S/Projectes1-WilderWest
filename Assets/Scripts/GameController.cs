@@ -44,12 +44,19 @@ public class GameController : MonoBehaviour
 
         prevP2 = nuts.GetComponent<GameObject>();
 
-        InvokeRepeating(nameof(PlatformSpawner), 4.0f, 1.0f);
+        InvokeRepeating(nameof(EnviromentSpawner), 4.0f, 1.0f);
         InvokeRepeating(nameof(EnemySpawner), 10.0f, 4.0f);
-        InvokeRepeating(nameof(CactusSpawner), 4.0f, 1.0f);
     }
     
-    void PlatformSpawner()
+    void EnviromentSpawner()
+    {
+        int temp = PlatformSpawner();
+        prevP2 = CurrentPool[temp / 10];
+        prevP1 = CurrentPool[temp % 10];
+        CactusSpawner();
+    }
+
+    int PlatformSpawner()
     {
         //P1 Spawn Logic
         int rnd = UnityEngine.Random.Range(0, 101);
@@ -100,6 +107,7 @@ public class GameController : MonoBehaviour
                 try {
                     Instantiate(CurrentPool[0], new Vector3(20, 3.5f, 0), Quaternion.identity);
                 } catch (Exception) { }
+                temp = temp + 00;
             }
             else if (rnd < Chances[1])
             {
@@ -109,6 +117,7 @@ public class GameController : MonoBehaviour
                     Instantiate(CurrentPool[1], new Vector3(20, 3.5f, 0), Quaternion.identity);
                 }
                 catch (Exception) { }
+                temp = temp + 10;
             }
             else if (rnd < Chances[2])
             {
@@ -118,6 +127,7 @@ public class GameController : MonoBehaviour
                     Instantiate(CurrentPool[2], new Vector3(20, 3.5f, 0), Quaternion.identity);
                 }
                 catch (Exception) { }
+                temp = temp + 20;
             }
             else
             {
@@ -127,9 +137,11 @@ public class GameController : MonoBehaviour
                     Instantiate(CurrentPool[4], new Vector3(20, 3.5f, 0), Quaternion.identity);
                 }
                 catch (Exception) { }
+                temp = temp + 30;
             }
         }
-        prevP1 = CurrentPool[temp];
+
+        return temp;
     }
 
     void EnemySpawner()
@@ -296,7 +308,6 @@ public class GameController : MonoBehaviour
         }
         if (score < 0)
         {
-            Debug.Log("ded");
             Time.timeScale = 0.0f;
             audioManager.playEffect(audioManager.death);
             deathMenu.toggleDeathUI();
