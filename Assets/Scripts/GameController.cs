@@ -310,7 +310,7 @@ public class GameController : MonoBehaviour
         {
             Time.timeScale = 0.0f;
             audioManager.playEffect(audioManager.death);
-            deathMenu.toggleDeathUI();
+            deathMenu.ToggleDeathUI();
         }
     }
 
