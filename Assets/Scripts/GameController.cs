@@ -6,7 +6,7 @@ using TMPro;
 
 public class GameController : MonoBehaviour
 {
-    private GameObject prevP1 = null;
+    private GameObject prevP1;
     private GameObject prevP2;
     private int bisonCounter;
     private int bisonCurrent;
@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
     private int score = 0;
 
     [Header("Prefabs")]
+    public GameObject empty;
     public GameObject nuts;
     public GameObject platform;
     public GameObject nplatform;
@@ -23,7 +24,7 @@ public class GameController : MonoBehaviour
     public GameObject cactus;
 
     private GameObject[] CurrentPool;
-    private int[] Chances;
+    [SerializeField] private int[] Chances = new int[] { 26, 51, 76 };
     private GameObject[] BasicPool;
     private GameObject[] NutlessPool;
     [SerializeField] private PlayerController playerController;
@@ -33,15 +34,15 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        BasicPool = new GameObject[] {null,nuts,platform,nplatform};
-        NutlessPool = new GameObject[] {null,null,platform,platform};
-        Chances = new int[] {26, 51, 76};
+        BasicPool = new GameObject[] {empty,nuts,platform,nplatform};
+        NutlessPool = new GameObject[] {empty,empty,platform,platform};
         bisonCounter = UnityEngine.Random.Range(5, 8);
         bisonCurrent = bisonCounter;
 
         deathMenu = gameObject.GetComponent<DeathMenu>();
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 
+        prevP1 = empty.GetComponent<GameObject>();
         prevP2 = nuts.GetComponent<GameObject>();
 
         InvokeRepeating(nameof(EnviromentSpawner), 4.0f, 1.0f);
@@ -64,79 +65,46 @@ public class GameController : MonoBehaviour
         if (rnd < Chances[0])
         {
             temp = 0;
-            try
-            {
-                Instantiate(CurrentPool[0], new Vector3(20, -1.5f, 0), Quaternion.identity);
-            }
-            catch (Exception) { }
+            Instantiate(CurrentPool[0], new Vector3(20, -1.5f, 0), Quaternion.identity);
+
         }
         else if (rnd < Chances[1])
         {
             temp = 1;
-            try
-            {
                 Instantiate(CurrentPool[1], new Vector3(20, -1.5f, 0), Quaternion.identity);
-            }
-            catch (Exception) { }
         }
         else if (rnd < Chances[2])
         {
             temp = 2;
-            try
-            {
                 Instantiate(CurrentPool[2], new Vector3(20, -1.5f, 0), Quaternion.identity);
-            }
-            catch (Exception) { }
         }
         else {
             temp = 3;
-            try
-            {
                 Instantiate(CurrentPool[3], new Vector3(20, -1.5f, 0), Quaternion.identity);
-            }
-            catch (Exception) { }
         }
 
         //P2 Spawn Logic
         rnd = UnityEngine.Random.Range(1, 101);
-        if (!((prevP1==null || prevP1.Equals(nuts)) && (prevP2 == null || prevP2.Equals(nuts))))
+        if (prevP1.Equals(platform) || prevP1.Equals(nplatform) || prevP2.Equals(platform) || prevP2.Equals(nplatform))
         {
             if (rnd < Chances[0])
             {
-                prevP2 = CurrentPool[0];
-                try {
-                    Instantiate(CurrentPool[0], new Vector3(20, 3.5f, 0), Quaternion.identity);
-                } catch (Exception) { }
+                Instantiate(CurrentPool[0], new Vector3(20, 3.5f, 0), Quaternion.identity);
                 temp = temp + 00;
             }
             else if (rnd < Chances[1])
             {
-                prevP2 = CurrentPool[1];
-                try
-                {
-                    Instantiate(CurrentPool[1], new Vector3(20, 3.5f, 0), Quaternion.identity);
-                }
-                catch (Exception) { }
+                Instantiate(CurrentPool[1], new Vector3(20, 3.5f, 0), Quaternion.identity);
                 temp = temp + 10;
             }
             else if (rnd < Chances[2])
             {
-                prevP2 = CurrentPool[2];
-                try
-                {
-                    Instantiate(CurrentPool[2], new Vector3(20, 3.5f, 0), Quaternion.identity);
-                }
-                catch (Exception) { }
+                Instantiate(CurrentPool[2], new Vector3(20, 3.5f, 0), Quaternion.identity);
                 temp = temp + 20;
             }
             else
             {
-                prevP2 = CurrentPool[3];
-                try
-                {
-                    Instantiate(CurrentPool[4], new Vector3(20, 3.5f, 0), Quaternion.identity);
-                }
-                catch (Exception) { }
+                Instantiate(CurrentPool[3], new Vector3(20, 3.5f, 0), Quaternion.identity);
                 temp = temp + 30;
             }
         }
@@ -151,12 +119,12 @@ public class GameController : MonoBehaviour
             if (bisonCurrent > 0)
             {
                 //Spawn bison
-                if (playerController.transform.position.y > 5f && !(prevP2 == null || prevP2.Equals(nuts)))
+                if (playerController.transform.position.y > 5f && (prevP2.Equals(platform) || prevP2.Equals(nplatform)))
                 {
                     bisonCurrent--;
                     Instantiate(bison, new Vector3(20, 5.5f, 0), Quaternion.identity);
                 }
-                else if (playerController.transform.position.y > 0f && !((prevP1 == null || prevP1.Equals(nuts))))
+                else if (playerController.transform.position.y > 0f && (prevP1.Equals(platform) || prevP1.Equals(nplatform)))
                 {
                     bisonCurrent--;
                     Instantiate(bison, new Vector3(20, 0.5f, 0), Quaternion.identity);
@@ -173,11 +141,11 @@ public class GameController : MonoBehaviour
                 bisonCounter = UnityEngine.Random.Range(4, 8);
                 bisonCurrent = bisonCounter;
                 banditActive = true;
-                if (playerController.transform.position.y > 5f && !(prevP2 == null || prevP2.Equals(nuts)))
+                if (playerController.transform.position.y > 5f && (prevP2.Equals(platform) || prevP2.Equals(nplatform)))
                 {
                     Instantiate(bandit, new Vector3(20, 5.5f, 0), Quaternion.identity);
                 }
-                else if (playerController.transform.position.y > 0f && !((prevP1 == null || prevP1.Equals(nuts))))
+                else if (playerController.transform.position.y > 0f && (prevP1.Equals(platform) || prevP1.Equals(nplatform)))
                 {
                     Instantiate(bandit, new Vector3(20, 0.5f, 0), Quaternion.identity);
                 }
@@ -193,7 +161,7 @@ public class GameController : MonoBehaviour
     {
         if (cactusSpawn)
         {
-            if (!(prevP1 == null || prevP1.Equals(nuts) || prevP1.Equals(nplatform)) && !(prevP2 == null || prevP2.Equals(nuts) || prevP2.Equals(nplatform)))
+            if (prevP1.Equals(platform) && prevP2.Equals(platform))
             {
                 int rnd = UnityEngine.Random.Range(1, 10);
                 switch (rnd)
@@ -228,7 +196,7 @@ public class GameController : MonoBehaviour
                 }
             }
 
-            else if (!((prevP1 == null || prevP1.Equals(nuts) || prevP1.Equals(nplatform))))
+            else if (prevP1.Equals(platform))
             {
                 int rnd = UnityEngine.Random.Range(1, 7);
                 switch (rnd)
@@ -253,7 +221,7 @@ public class GameController : MonoBehaviour
                         break;
                 }
             }
-            else if (!((prevP2 == null || prevP2.Equals(nuts) || prevP2.Equals(nplatform))))
+            else if (prevP2.Equals(platform))
             {
                 int rnd = UnityEngine.Random.Range(1, 7);
                 switch (rnd)
