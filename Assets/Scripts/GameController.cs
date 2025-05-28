@@ -66,21 +66,20 @@ public class GameController : MonoBehaviour
         {
             temp = 0;
             Instantiate(CurrentPool[0], new Vector3(20, -1.5f, 0), Quaternion.identity);
-
         }
         else if (rnd < Chances[1])
         {
             temp = 1;
-                Instantiate(CurrentPool[1], new Vector3(20, -1.5f, 0), Quaternion.identity);
+            Instantiate(CurrentPool[1], new Vector3(20, -1.5f, 0), Quaternion.identity);
         }
         else if (rnd < Chances[2])
         {
             temp = 2;
-                Instantiate(CurrentPool[2], new Vector3(20, -1.5f, 0), Quaternion.identity);
+            Instantiate(CurrentPool[2], new Vector3(20, -1.5f, 0), Quaternion.identity);
         }
         else {
             temp = 3;
-                Instantiate(CurrentPool[3], new Vector3(20, -1.5f, 0), Quaternion.identity);
+            Instantiate(CurrentPool[3], new Vector3(20, -1.5f, 0), Quaternion.identity);
         }
 
         //P2 Spawn Logic
@@ -221,6 +220,7 @@ public class GameController : MonoBehaviour
                         break;
                 }
             }
+
             else if (prevP2.Equals(platform))
             {
                 int rnd = UnityEngine.Random.Range(1, 7);
@@ -246,6 +246,7 @@ public class GameController : MonoBehaviour
                         break;
                 }
             }
+
             else
             {
                 int rnd = UnityEngine.Random.Range(1, 4);
