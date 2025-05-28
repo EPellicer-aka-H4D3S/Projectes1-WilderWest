@@ -36,7 +36,7 @@ public class GameController : MonoBehaviour
         BasicPool = new GameObject[] {null,nuts,platform,nplatform};
         NutlessPool = new GameObject[] {null,null,platform,platform};
         Chances = new int[] {26, 51, 76};
-        bisonCounter = UnityEngine.Random.Range(4, 8);
+        bisonCounter = UnityEngine.Random.Range(5, 8);
         bisonCurrent = bisonCounter;
 
         deathMenu = gameObject.GetComponent<DeathMenu>();
@@ -59,7 +59,7 @@ public class GameController : MonoBehaviour
     int PlatformSpawner()
     {
         //P1 Spawn Logic
-        int rnd = UnityEngine.Random.Range(0, 101);
+        int rnd = UnityEngine.Random.Range(1, 101);
         int temp;
         if (rnd < Chances[0])
         {
@@ -98,7 +98,7 @@ public class GameController : MonoBehaviour
         }
 
         //P2 Spawn Logic
-        rnd = UnityEngine.Random.Range(0, 101);
+        rnd = UnityEngine.Random.Range(1, 101);
         if (!((prevP1==null || prevP1.Equals(nuts)) && (prevP2 == null || prevP2.Equals(nuts))))
         {
             if (rnd < Chances[0])
@@ -195,7 +195,7 @@ public class GameController : MonoBehaviour
         {
             if (!(prevP1 == null || prevP1.Equals(nuts) || prevP1.Equals(nplatform)) && !(prevP2 == null || prevP2.Equals(nuts) || prevP2.Equals(nplatform)))
             {
-                int rnd = UnityEngine.Random.Range(0, 10);
+                int rnd = UnityEngine.Random.Range(1, 10);
                 switch (rnd)
                 {
                     case 1:
@@ -230,7 +230,7 @@ public class GameController : MonoBehaviour
 
             else if (!((prevP1 == null || prevP1.Equals(nuts) || prevP1.Equals(nplatform))))
             {
-                int rnd = UnityEngine.Random.Range(0, 7);
+                int rnd = UnityEngine.Random.Range(1, 7);
                 switch (rnd)
                 {
                     case 1:
@@ -255,7 +255,7 @@ public class GameController : MonoBehaviour
             }
             else if (!((prevP2 == null || prevP2.Equals(nuts) || prevP2.Equals(nplatform))))
             {
-                int rnd = UnityEngine.Random.Range(0, 7);
+                int rnd = UnityEngine.Random.Range(1, 7);
                 switch (rnd)
                 {
                     case 1:
@@ -280,7 +280,7 @@ public class GameController : MonoBehaviour
             }
             else
             {
-                int rnd = UnityEngine.Random.Range(0, 4);
+                int rnd = UnityEngine.Random.Range(1, 4);
                 switch (rnd)
                 {
                     case 1:
@@ -302,7 +302,7 @@ public class GameController : MonoBehaviour
     {
         if (score >= 0)
         {
-            score = score - 30;
+            //score = score - 30;
             audioManager.playEffect(audioManager.hit);
             scoreDisplay.text = "x" + score.ToString();
         }
