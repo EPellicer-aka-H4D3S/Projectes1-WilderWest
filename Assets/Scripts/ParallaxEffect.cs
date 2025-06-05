@@ -21,15 +21,13 @@ namespace Utils
         
         [Tooltip("If true, the object will scroll infinitely on the X axis.")]
         [SerializeField] private bool infiniteScrollingX = false;
-        [Tooltip("If true, the object will scroll infinitely on the Y axis.")]
-        [SerializeField] private bool infiniteScrollingY = false;
         
         [Tooltip("If true, the initial position is set to the position in the inspector. If false, the initial position is calculated based on parallax factors and camera position.")]
         [SerializeField] private bool useDesignTimePosition = true;
 
         [SerializeField] private GameObject objectToFollow;
 
-        private Camera _mainCamera;
+        private Camera mainCamera;
         private Vector3 lastObjectToFollowPosition;
         private float textureUnitSizeX;
         private float textureUnitSizeY;
@@ -40,7 +38,7 @@ namespace Utils
         {
             // Initialize components
             spriteRenderer = GetComponent<SpriteRenderer>();
-            _mainCamera = Camera.main;
+            mainCamera = Camera.main;
             
             // Check if the main camera is assigned
             if (!objectToFollow)
@@ -66,8 +64,8 @@ namespace Utils
             if (spriteRenderer && spriteRenderer.sprite)
             {
                 Sprite sprite = spriteRenderer.sprite;
-                textureUnitSizeX = sprite.texture.width / sprite.pixelsPerUnit;
-                textureUnitSizeY = sprite.texture.height / sprite.pixelsPerUnit;
+                textureUnitSizeX = spriteRenderer.size.x * transform.localScale.x;
+                textureUnitSizeY = spriteRenderer.size.y * transform.localScale.y;
             }
             else
             {
@@ -128,9 +126,6 @@ namespace Utils
             // Handle infinite scrolling for background elements
             if (infiniteScrollingX)
                 HandleInfiniteHorizontalScrolling();
-            
-            if (infiniteScrollingY)
-                HandleInfiniteVerticalScrolling();
 
             // Update the last camera position
             lastObjectToFollowPosition = objectToFollow.transform.position;
@@ -141,56 +136,17 @@ namespace Utils
             // Only apply if we have a sprite renderer
             if (!spriteRenderer) return;
 
-            float camHorizontalExtent = _mainCamera.orthographicSize * Screen.width / Screen.height;
+            float camHorizontalExtent = mainCamera.orthographicSize * Screen.width / Screen.height;
 
             // Calculate the distance between the camera and the object on the X axis
-            float offsetPositionX = (_mainCamera.transform.position.x - transform.position.x) / transform.localScale.x*2;
+            float offsetPositionX = mainCamera.transform.position.x - transform.position.x;
 
             // If the object is too far to the left, move it to the right
-            if (offsetPositionX > camHorizontalExtent + textureUnitSizeX / 2)
+            if (offsetPositionX >= camHorizontalExtent + textureUnitSizeX / 2)
             {
                 transform.position = new Vector3(
-                    _mainCamera.transform.position.x - offsetPositionX + textureUnitSizeX * transform.localScale.x,
+                    mainCamera.transform.position.x + textureUnitSizeX,
                     transform.position.y,
-                    transform.position.z
-                );
-            }
-            // If the object is too far to the right, move it to the left
-            else if (offsetPositionX < -camHorizontalExtent - textureUnitSizeX / 2)
-            {
-                transform.position = new Vector3(
-                    _mainCamera.transform.position.x - offsetPositionX - textureUnitSizeX*transform.localScale.x,
-                    transform.position.y,
-                    transform.position.z
-                );
-            }
-        }
-
-        private void HandleInfiniteVerticalScrolling()
-        {
-            // Only apply if we have a sprite renderer
-            if (!spriteRenderer) return;
-
-            float camVerticalExtent = _mainCamera.orthographicSize;
-            
-            // Calculate the distance between the camera and the object on the Y axis
-            float offsetPositionY = (objectToFollow.transform.position.y - transform.position.y) % textureUnitSizeY;
-            
-            // If the object is too far below, move it up
-            if (offsetPositionY > camVerticalExtent + textureUnitSizeY / 2)
-            {
-                transform.position = new Vector3(
-                    transform.position.x,
-                    objectToFollow.transform.position.y - offsetPositionY + textureUnitSizeY,
-                    transform.position.z
-                );
-            }
-            // If the object is too far above, move it down
-            else if (offsetPositionY < -camVerticalExtent - textureUnitSizeY / 2)
-            {
-                transform.position = new Vector3(
-                    transform.position.x,
-                    objectToFollow.transform.position.y - offsetPositionY - textureUnitSizeY,
                     transform.position.z
                 );
             }
