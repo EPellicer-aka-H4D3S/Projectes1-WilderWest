@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 243c951519a137c4c9a75ffe02ec26d2
+guid: a67e9191c3169b7428e4537612bb51ac
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4596108259378594418
-    second: Bison_0
+      213: -7145582747823957107
+    second: bison 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,10 +49,10 @@ TextureImporter:
   spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 0
-  alignment: 9
-  spritePivot: {x: 0.42, y: 0.5}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 64
-  spriteBorder: {x: 0, y: 0, z: 11, w: 16}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bison_0
+      name: bison 1_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 0
         y: 0
-        width: 48
-        height: 48
+        width: 64
+        height: 44
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 27200855c18a8cf30800000000000000
-      internalID: 4596108259378594418
+      spriteID: d8b1bca895ac5dc90800000000000000
+      internalID: -7145582747823957107
       vertices: []
       indices: 
       edges: []
@@ -126,7 +126,7 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Bison_0: 4596108259378594418
+      bison 1_0: -7145582747823957107
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
