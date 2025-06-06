@@ -48,7 +48,7 @@ public class Dynamite : MovableObject
         if (hitted)
         {
             transform.position = transform.position + speed * Time.deltaTime * Vector3.right;
-            transform.Rotate(Vector3.forward*5);
+            transform.Rotate(Vector3.forward*2);
         }
         else
         {
