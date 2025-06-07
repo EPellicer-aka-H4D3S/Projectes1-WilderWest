@@ -8,8 +8,8 @@ public class GameController : MonoBehaviour
 {
     private GameObject prevP1;
     private GameObject prevP2;
-    private int bisonCounter;
-    private int bisonCurrent;
+    private int enemyCounter;
+    private int enemyCurrent;
     private bool banditActive = false;
     private bool cactusSpawn = true;
     private int score = 0;
@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour
     public GameObject platform;
     public GameObject nplatform;
     public GameObject bison;
+    public GameObject bulture;
     public GameObject bandit;
     public GameObject cactus;
 
@@ -36,8 +37,8 @@ public class GameController : MonoBehaviour
     {
         BasicPool = new GameObject[] {empty,nuts,platform,nplatform};
         NutlessPool = new GameObject[] {empty,empty,platform,platform};
-        bisonCounter = UnityEngine.Random.Range(5, 8);
-        bisonCurrent = bisonCounter;
+        enemyCounter = UnityEngine.Random.Range(5, 8);
+        enemyCurrent = enemyCounter;
 
         deathMenu = gameObject.GetComponent<DeathMenu>();
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
@@ -115,30 +116,40 @@ public class GameController : MonoBehaviour
     {
         if (!banditActive)
         {
-            if (bisonCurrent > 0)
+            if (enemyCurrent > 0)
             {
-                //Spawn bison
-                if (playerController.transform.position.y > 5f && (prevP2.Equals(platform) || prevP2.Equals(nplatform)))
+                //Spawn enemy
+                GameObject enemy;
+                if (UnityEngine.Random.Range(1,3)==1)
                 {
-                    bisonCurrent--;
-                    Instantiate(bison, new Vector3(20, 5.5f, 0), Quaternion.identity);
-                }
-                else if (playerController.transform.position.y > 0f && (prevP1.Equals(platform) || prevP1.Equals(nplatform)))
-                {
-                    bisonCurrent--;
-                    Instantiate(bison, new Vector3(20, 0.5f, 0), Quaternion.identity);
+                    enemy  = bison;
                 }
                 else
                 {
-                    bisonCurrent--;
-                    Instantiate(bison, new Vector3(20, -4.5f, 0), Quaternion.identity);
+                    enemy = bulture;
+                }
+
+                if (playerController.transform.position.y > 5f && (prevP2.Equals(platform) || prevP2.Equals(nplatform)))
+                {
+                    enemyCurrent--;
+                    Instantiate(enemy, new Vector3(20, 5.5f, 0), Quaternion.identity);
+                }
+                else if (playerController.transform.position.y > 0f && (prevP1.Equals(platform) || prevP1.Equals(nplatform)))
+                {
+                    enemyCurrent--;
+                    Instantiate(enemy, new Vector3(20, 0.5f, 0), Quaternion.identity);
+                }
+                else
+                {
+                    enemyCurrent--;
+                    Instantiate(enemy, new Vector3(20, -4.5f, 0), Quaternion.identity);
                 }
             }
             else
             {
                 //Spawn bandit
-                bisonCounter = UnityEngine.Random.Range(4, 8);
-                bisonCurrent = bisonCounter;
+                enemyCounter = UnityEngine.Random.Range(4, 8);
+                enemyCurrent = enemyCounter;
                 banditActive = true;
                 if (playerController.transform.position.y > 5f && (prevP2.Equals(platform) || prevP2.Equals(nplatform)))
                 {

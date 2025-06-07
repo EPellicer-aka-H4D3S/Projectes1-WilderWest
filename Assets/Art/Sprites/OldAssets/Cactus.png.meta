@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a67e9191c3169b7428e4537612bb51ac
+guid: a5d85045414650d48ad96e161fe0521d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7145582747823957107
-    second: bison 1_0
+      213: 7873444928579934181
+    second: Cactus_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -50,7 +50,7 @@ TextureImporter:
   spriteExtrude: 1
   spriteMeshType: 0
   alignment: 9
-  spritePivot: {x: 0.5, y: 0.515625}
+  spritePivot: {x: 0.5, y: 0.55}
   spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bison 1_0
+      name: Cactus_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 3
         y: 0
-        width: 64
-        height: 44
+        width: 58
+        height: 63
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d8b1bca895ac5dc90800000000000000
-      internalID: -7145582747823957107
+      spriteID: 5e79b9e7278144d60800000000000000
+      internalID: 7873444928579934181
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bison 1_0: -7145582747823957107
+      Cactus_0: 7873444928579934181
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
