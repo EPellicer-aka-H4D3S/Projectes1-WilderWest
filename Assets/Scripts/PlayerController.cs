@@ -31,26 +31,29 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.W) && IsGrounded() && rigidBody.linearVelocity == Vector2.zero)
+        if (Time.timeScale != 0.0f)
         {
-            Jump();
-        }
-        if (Input.GetKey(KeyCode.S) && transform.position.y>-3.5f && rigidBody.linearVelocity == Vector2.zero)
-        {
-            Drop();
-        }
-        if (Input.GetKey(KeyCode.D) && rigidBody.linearVelocity == Vector2.zero)
-        {
-            Attack.Invoke();
-        }
-        if (rigidBody.linearVelocity == Vector2.zero)
-        {
-            dust.gameObject.SetActive(true);
+            if (Input.GetKey(KeyCode.W) && IsGrounded() && rigidBody.linearVelocity == Vector2.zero)
+            {
+                Jump();
+            }
+            if (Input.GetKey(KeyCode.S) && transform.position.y > -3.5f && rigidBody.linearVelocity == Vector2.zero)
+            {
+                Drop();
+            }
+            if (Input.GetKey(KeyCode.D) && rigidBody.linearVelocity == Vector2.zero)
+            {
+                Attack.Invoke();
+            }
+            if (rigidBody.linearVelocity == Vector2.zero)
+            {
+                dust.gameObject.SetActive(true);
 
-        }
-        else
-        {
-            dust.gameObject.SetActive(false);
+            }
+            else
+            {
+                dust.gameObject.SetActive(false);
+            }
         }
     }
 

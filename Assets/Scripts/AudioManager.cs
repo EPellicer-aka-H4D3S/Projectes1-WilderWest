@@ -11,10 +11,22 @@ public class AudioManager : MonoBehaviour
     public AudioClip hit;
     public AudioClip death;
 
-    private void Start()
+    void Start()
     {
         MusicSource.clip = music;
         MusicSource.Play();
+    }
+
+    void Update()
+    {
+        if (Time.timeScale == 0.0f)
+        {
+            MusicSource.Pause();
+        }
+        else if(!MusicSource.isPlaying)
+        {
+            MusicSource.Play();
+        }
     }
 
     public void playEffect(AudioClip clip)
