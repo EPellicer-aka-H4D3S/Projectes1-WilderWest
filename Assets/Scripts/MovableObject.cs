@@ -13,9 +13,9 @@ public class MovableObject : MonoBehaviour
     void Update()
     {
         transform.position = transform.position + speed * Time.deltaTime * Vector3.left;
-        if (!gameObject.GetComponentInChildren<Renderer>().isVisible && transform.position.x<0)
+        if (transform.position.x < -20.0f)
         {
-            Destroy(gameObject,2.0f);
+            Destroy(gameObject);
         }
     }
 }

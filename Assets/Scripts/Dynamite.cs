@@ -55,9 +55,9 @@ public class Dynamite : MovableObject
             transform.position = transform.position + speed * Time.deltaTime * Vector3.left;
             transform.Rotate(Vector3.forward);
         }
-        if (!gameObject.GetComponent<Renderer>().isVisible)
+        if (transform.position.x < -20.0f || transform.position.x > 20.0f)
         {
-            Destroy(gameObject, 2.0f);
+            Destroy(gameObject);
         }
     }
 }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Nut : MovableObject
+public class Nut : MonoBehaviour
 {
     public UnityEvent NutColected;
 
