@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 615c8cbfb956af54b905bfedcf40da87
+guid: 8f7e83f29eee612439bc0f7e40020018
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7422720360937618243
-    second: tile_0061_0
+      213: 2732799211911765962
+    second: squirrel_Death_0
+  - first:
+      213: 779891663978867051
+    second: squirrel_Death_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,11 +49,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 0
-  alignment: 9
-  spritePivot: {x: 0.5, y: 0.4375}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -72,7 +75,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 64
+    maxTextureSize: 128
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -100,7 +103,51 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tile_0061_0
+      name: squirrel_Death_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acfd77c776adce520800000000000000
+      internalID: 2732799211911765962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: squirrel_Death_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b69afba165bb2da00800000000000000
+      internalID: 779891663978867051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: squirrel_Death_2
       rect:
         serializedVersion: 2
         x: 0
@@ -108,15 +155,37 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 34bfebc47dcc20760800000000000000
-      internalID: 7422720360937618243
+      spriteID: 670ba71541c2c2a418d9bc3d28412851
+      internalID: 1257325061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: squirrel_Death_3
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5dec4387cbacbd41bbd392db6eb5fd8
+      internalID: 357647198
       vertices: []
       indices: 
       edges: []
@@ -125,8 +194,8 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    spriteID: a4523dc63192ef74585502898a2de0f1
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -135,7 +204,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      tile_0061_0: 7422720360937618243
+      squirrel_Death_0: 2732799211911765962
+      squirrel_Death_1: 779891663978867051
+      squirrel_Death_2: 1257325061
+      squirrel_Death_3: 357647198
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
