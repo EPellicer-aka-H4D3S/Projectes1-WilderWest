@@ -3310,7 +3310,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 199539202}
         m_TargetAssemblyTypeName: DeathMenu, Assembly-CSharp
-        m_MethodName: restart
+        m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

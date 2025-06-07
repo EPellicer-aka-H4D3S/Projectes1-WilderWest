@@ -284,7 +284,7 @@ public class GameController : MonoBehaviour
         {
             score = score - 30;
             audioManager.playEffect(audioManager.hit);
-            scoreDisplay.text = "x" + score.ToString();
+            
         }
         if (score < 0)
         {
@@ -292,6 +292,11 @@ public class GameController : MonoBehaviour
             audioManager.playEffect(audioManager.death);
             deathMenu.ToggleDeathUI();
         }
+        if (score <= 0)
+        {
+            scoreDisplay.text = "x0";
+        }
+        else scoreDisplay.text = "x" + score.ToString();
     }
 
     public void Accelerate()
