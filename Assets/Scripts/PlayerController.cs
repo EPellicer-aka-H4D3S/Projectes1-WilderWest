@@ -7,13 +7,14 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 10.1f;
     public Rigidbody2D rigidBody;
-    public CircleCollider2D circleCollider;
+    public Collider2D collider;
 
     public Transform groundCheckHB;
     private Vector2 groundCheckSize = new Vector2(0.5f, 0.05f);
     public LayerMask groundLayer;
 
-    AudioManager audioManager;
+    private ParticleSystem dust;
+    private AudioManager audioManager;
 
     public UnityEvent Attack;
 
@@ -22,8 +23,9 @@ public class PlayerController : MonoBehaviour
     {
         InvokeRepeating(nameof(AttackListener), 0.0f, 1.0f);
         rigidBody = GetComponent<Rigidbody2D>();
-        circleCollider = GetComponent<CircleCollider2D>();
+        collider = GetComponent<CapsuleCollider2D>();
 
+        dust = GetComponentInChildren<ParticleSystem>();
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
@@ -40,6 +42,15 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.D) && rigidBody.linearVelocity == Vector2.zero)
         {
             Attack.Invoke();
+        }
+        if (rigidBody.linearVelocity == Vector2.zero)
+        {
+            dust.gameObject.SetActive(true);
+
+        }
+        else
+        {
+            dust.gameObject.SetActive(false);
         }
     }
 
@@ -65,9 +76,9 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator DisableCollider(float timer)
     {
-        circleCollider.isTrigger=true;
+        collider.isTrigger=true;
         yield return new WaitForSeconds(timer);
-        circleCollider.isTrigger = false;
+        collider.isTrigger = false;
     }
 
     void AttackListener()

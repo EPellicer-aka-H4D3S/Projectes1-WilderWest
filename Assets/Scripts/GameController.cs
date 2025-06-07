@@ -299,7 +299,7 @@ public class GameController : MonoBehaviour
         banditActive = false;
         if (Time.timeScale < 3.0f)
         {
-            Time.timeScale = Time.timeScale + 0.2f;
+            Time.timeScale = Time.timeScale + 0.15f;
         }
     }
 
