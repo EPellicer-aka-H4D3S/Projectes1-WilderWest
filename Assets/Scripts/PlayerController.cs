@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
     void AttackListener()
     {
         try { 
-        AttackDynamite.AddListener(GameObject.FindGameObjectWithTag("Dynamite").GetComponent<Dynamite>().GetHit);
+            AttackDynamite.AddListener(GameObject.FindGameObjectWithTag("Dynamite").GetComponent<Dynamite>().GetHit);
         }
         catch (Exception) { }
     }

@@ -1,7 +1,4 @@
-using System;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
 using TMPro;
 
 public class GameController : MonoBehaviour
@@ -47,8 +44,8 @@ public class GameController : MonoBehaviour
         deathMenu = gameObject.GetComponent<DeathMenu>();
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 
-        prevP1 = empty.GetComponent<GameObject>();
-        prevP2 = nuts.GetComponent<GameObject>();
+        prevP1 = empty;
+        prevP2 = nuts;
 
         InvokeRepeating(nameof(EnviromentSpawner), 4.0f, 1.0f);
         InvokeRepeating(nameof(EnemySpawner), 10.0f, 4.0f);
@@ -286,7 +283,7 @@ public class GameController : MonoBehaviour
     {
         if (score >= 0)
         {
-            //score = score - 30;
+            score -= Mathf.RoundToInt(10 * Time.timeScale);
             damageParticle.Play();
             audioManager.playEffect(audioManager.hit);
             
