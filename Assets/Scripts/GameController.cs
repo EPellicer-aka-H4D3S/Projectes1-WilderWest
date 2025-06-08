@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     private bool banditActive = false;
     private bool cactusSpawn = true;
     private int score = 0;
+    private int totalScore = 0;
 
     [Header("Prefabs")]
     public GameObject empty;
@@ -30,6 +31,8 @@ public class GameController : MonoBehaviour
     private GameObject[] NutlessPool;
     [SerializeField] private PlayerController playerController;
     [SerializeField] private TextMeshProUGUI scoreDisplay;
+    [SerializeField] private TextMeshProUGUI textFinalScore;
+    [SerializeField] private TextMeshProUGUI textCurrentScore;
     private DeathMenu deathMenu;
     private AudioManager audioManager;
 
@@ -282,7 +285,7 @@ public class GameController : MonoBehaviour
     {
         if (score >= 0)
         {
-            //score = score - 30;
+            score = score - 30;
             audioManager.playEffect(audioManager.hit);
             
         }
@@ -291,6 +294,7 @@ public class GameController : MonoBehaviour
             Time.timeScale = 0.0f;
             audioManager.playEffect(audioManager.death);
             deathMenu.ToggleDeathUI();
+            textFinalScore.text = totalScore.ToString();
         }
         if (score <= 0)
         {
@@ -311,6 +315,8 @@ public class GameController : MonoBehaviour
     public void UpdateScore()
     {
         score++;
+        totalScore++;
+        textCurrentScore.text = totalScore.ToString();
         scoreDisplay.text = "x" + score.ToString();
     }
 
