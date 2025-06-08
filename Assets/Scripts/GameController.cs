@@ -288,7 +288,6 @@ public class GameController : MonoBehaviour
         {
             //score = score - 30;
             damageParticle.Play();
-            
             audioManager.playEffect(audioManager.hit);
             
         }
