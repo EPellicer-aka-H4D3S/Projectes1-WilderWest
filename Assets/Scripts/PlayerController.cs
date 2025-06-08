@@ -16,7 +16,8 @@ public class PlayerController : MonoBehaviour
     private ParticleSystem dust;
     private AudioManager audioManager;
 
-    public UnityEvent Attack;
+    private Animator animator;
+    public UnityEvent AttackDynamite;
 
 
     void Start()
@@ -26,6 +27,8 @@ public class PlayerController : MonoBehaviour
         collider = GetComponent<CapsuleCollider2D>();
 
         dust = GetComponentInChildren<ParticleSystem>();
+        dust.Play();
+        animator = GetComponent<Animator>();
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
@@ -33,26 +36,26 @@ public class PlayerController : MonoBehaviour
     {
         if (Time.timeScale != 0.0f)
         {
-            if (Input.GetKey(KeyCode.W) && IsGrounded() && rigidBody.linearVelocity == Vector2.zero)
+            if (Input.GetKey(KeyCode.W) && IsGrounded() && rigidBody.linearVelocity.magnitude < 0.1f)
             {
                 Jump();
             }
-            if (Input.GetKey(KeyCode.S) && transform.position.y > -3.5f && rigidBody.linearVelocity == Vector2.zero)
+            if (Input.GetKey(KeyCode.S) && transform.position.y > -3.5f && rigidBody.linearVelocity.magnitude < 0.1f)
             {
                 Drop();
             }
-            if (Input.GetKey(KeyCode.D) && rigidBody.linearVelocity == Vector2.zero)
+            if (Input.GetKey(KeyCode.D) && rigidBody.linearVelocity == Vector2.zero && !animator.GetCurrentAnimatorStateInfo(0).IsName("squirrelAttack"))
             {
-                Attack.Invoke();
+                StartCoroutine(Attack(0.23f));
+                
             }
-            if (rigidBody.linearVelocity == Vector2.zero)
+            if (Mathf.Abs(rigidBody.linearVelocity.y) < 0.1f && dust.isStopped)
             {
-                dust.gameObject.SetActive(true);
-
+                dust.Play();
             }
-            else
+            else if(Mathf.Abs(rigidBody.linearVelocity.y) > 0.1f)
             {
-                dust.gameObject.SetActive(false);
+                dust.Stop();
             }
         }
     }
@@ -84,12 +87,29 @@ public class PlayerController : MonoBehaviour
         collider.isTrigger = false;
     }
 
+    private IEnumerator Attack(float timer)
+    {
+        animator.Play("squirrelAttack");
+        yield return new WaitForSeconds(timer);
+        var hit = Physics2D.BoxCast(transform.position + Vector3.right*2.5f, new Vector2(2,2), 0.0f, transform.right, 3, LayerMask.GetMask("Hittable"));
+        if (hit && hit.collider.tag.Equals("Dynamite"))
+        {
+            AttackDynamite.Invoke();
+        }
+    }
+
     void AttackListener()
     {
         try { 
-        Attack.AddListener(GameObject.FindGameObjectWithTag("Dynamite").GetComponent<Dynamite>().GetHit);
+        AttackDynamite.AddListener(GameObject.FindGameObjectWithTag("Dynamite").GetComponent<Dynamite>().GetHit);
         }
         catch (Exception) { }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawCube(transform.position+Vector3.right*2.5f, Vector2.one*2);
     }
 
     private void OnDrawGizmosSelected()

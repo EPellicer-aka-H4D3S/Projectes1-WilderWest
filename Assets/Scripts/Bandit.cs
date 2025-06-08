@@ -22,7 +22,7 @@ public class Bandit : MonoBehaviour
 
     void SpawnDynamite()
     {
-        Instantiate(dynamite, new Vector3(7.5f, transform.position.y, 0), Quaternion.identity);
+        Instantiate(dynamite, new Vector3(7.5f, transform.position.y - 0.5f, 0), Quaternion.identity);
     }
 
     public void Die()

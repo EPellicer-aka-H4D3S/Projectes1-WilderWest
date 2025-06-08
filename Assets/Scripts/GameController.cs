@@ -135,17 +135,17 @@ public class GameController : MonoBehaviour
                 if (playerController.transform.position.y > 5f && (prevP2.Equals(platform) || prevP2.Equals(nplatform)))
                 {
                     enemyCurrent--;
-                    Instantiate(enemy, new Vector3(20, 5.5f, 0), Quaternion.identity);
+                    Instantiate(enemy, new Vector3(20, 6.0f, 0), Quaternion.identity);
                 }
                 else if (playerController.transform.position.y > 0f && (prevP1.Equals(platform) || prevP1.Equals(nplatform)))
                 {
                     enemyCurrent--;
-                    Instantiate(enemy, new Vector3(20, 0.5f, 0), Quaternion.identity);
+                    Instantiate(enemy, new Vector3(20, 1.0f, 0), Quaternion.identity);
                 }
                 else
                 {
                     enemyCurrent--;
-                    Instantiate(enemy, new Vector3(20, -4.5f, 0), Quaternion.identity);
+                    Instantiate(enemy, new Vector3(20, -4.0f, 0), Quaternion.identity);
                 }
             }
             else
@@ -156,15 +156,15 @@ public class GameController : MonoBehaviour
                 banditActive = true;
                 if (playerController.transform.position.y > 5f && (prevP2.Equals(platform) || prevP2.Equals(nplatform)))
                 {
-                    Instantiate(bandit, new Vector3(20, 5.5f, 0), Quaternion.identity);
+                    Instantiate(bandit, new Vector3(20, 6.0f, 0), Quaternion.identity);
                 }
                 else if (playerController.transform.position.y > 0f && (prevP1.Equals(platform) || prevP1.Equals(nplatform)))
                 {
-                    Instantiate(bandit, new Vector3(20, 0.5f, 0), Quaternion.identity);
+                    Instantiate(bandit, new Vector3(20, 1.0f, 0), Quaternion.identity);
                 }
                 else
                 {
-                    Instantiate(bandit, new Vector3(20, -4.5f, 0), Quaternion.identity);
+                    Instantiate(bandit, new Vector3(20, -4.0f, 0), Quaternion.identity);
                 }
             }
         }
@@ -285,7 +285,7 @@ public class GameController : MonoBehaviour
     {
         if (score >= 0)
         {
-            score = score - 30;
+            //score = score - 30;
             audioManager.playEffect(audioManager.hit);
             
         }

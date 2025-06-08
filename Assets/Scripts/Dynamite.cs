@@ -30,11 +30,8 @@ public class Dynamite : MovableObject
 
     public void GetHit()
     {
-        if (transform.position.x < -7.5f && transform.position.y < playerController.transform.position.y+1.5f && transform.position.y > playerController.transform.position.y - 0.5f)
-        {
-            hitted = true;
-            speed = 20;
-        }
+        hitted = true;
+        speed = 20;
     }
 
     void AddListeners()
@@ -55,6 +52,7 @@ public class Dynamite : MovableObject
             transform.position = transform.position + speed * Time.deltaTime * Vector3.left;
             transform.Rotate(Vector3.forward);
         }
+
         if (transform.position.x < -20.0f || transform.position.x > 20.0f)
         {
             Destroy(gameObject);
