@@ -106,15 +106,11 @@ public class PlayerController : MonoBehaviour
         catch (Exception) { }
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawCube(transform.position+Vector3.right*2.5f, Vector2.one*2);
-    }
-
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.white;
         Gizmos.DrawCube(groundCheckHB.position, groundCheckSize);
+        Gizmos.color = Color.red;
+        Gizmos.DrawCube(transform.position+Vector3.right*2.5f, Vector2.one*2);
     }
 }

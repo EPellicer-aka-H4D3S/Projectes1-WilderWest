@@ -33,6 +33,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreDisplay;
     [SerializeField] private TextMeshProUGUI textFinalScore;
     [SerializeField] private TextMeshProUGUI textCurrentScore;
+    [SerializeField] private ParticleSystem damageParticle;
     private DeathMenu deathMenu;
     private AudioManager audioManager;
 
@@ -286,6 +287,8 @@ public class GameController : MonoBehaviour
         if (score >= 0)
         {
             //score = score - 30;
+            damageParticle.Play();
+            
             audioManager.playEffect(audioManager.hit);
             
         }
