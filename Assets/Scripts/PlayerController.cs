@@ -103,7 +103,6 @@ public class PlayerController : MonoBehaviour
                 AttackDynamite.Invoke();
             }
             yield return new WaitForSeconds(0.133f);
-            temp--;
         }
     }
 
