@@ -7,17 +7,12 @@ public class Bandit : MonoBehaviour
     public UnityEvent DeadBandit;
 
     public GameObject dynamite;
-    private Animator animator;
-    private Rigidbody2D rb;
 
     void Start()
     {
         DeadBandit.AddListener(GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().Accelerate);
         StartCoroutine(Move());
         InvokeRepeating(nameof(SpawnDynamite),2.0f,6.0f);
-
-        animator = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>();
     }
 
     void SpawnDynamite()
@@ -28,9 +23,7 @@ public class Bandit : MonoBehaviour
     public void Die()
     {
         DeadBandit.Invoke();
-        rb.Sleep();
-        animator.Play("dynamiteExplosion");
-        Destroy(gameObject,0.5f);
+        Destroy(gameObject);
     }
 
     private IEnumerator Move()

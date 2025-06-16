@@ -8,11 +8,13 @@ public class Dynamite : MovableObject
     
     private Animator animator;
     private bool hitted = false;
+    private bool active = true;
     
 
     void Start()
     {
         InvokeRepeating(nameof(AddListeners), 0.0f, 1.0f);
+        animator = GetComponent<Animator>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -20,12 +22,16 @@ public class Dynamite : MovableObject
         if (collision.CompareTag("Player"))
         {
             KillPlayer.Invoke();
-            Destroy(gameObject);
+            active = false;
+            animator.Play("dynamiteExplosion");
+            Destroy(gameObject,0.5f);
         }
         else if (collision.CompareTag("Bandit"))
         {
             KillBandit.Invoke();
-            Destroy(gameObject);
+            active = false;
+            animator.Play("dynamiteExplosion");
+            Destroy(gameObject,0.5f);
         }
     }
 
@@ -42,26 +48,29 @@ public class Dynamite : MovableObject
 
     void Update()
     {
-        if (hitted)
+        if (active)
         {
-            transform.position += (d.speed + addedSpeed) * 2 * Time.deltaTime * Vector3.right;
-            if (Time.timeScale != 0)
+            if (hitted)
             {
-                transform.Rotate(Vector3.forward * 2);
+                transform.position += (d.speed + addedSpeed) * 2 * Time.deltaTime * Vector3.right;
+                if (Time.timeScale != 0)
+                {
+                    transform.Rotate(Vector3.forward * 2);
+                }
             }
-        }
-        else
-        {
-            transform.position += (d.speed + addedSpeed) * Time.deltaTime * Vector3.left;
-            if (Time.timeScale != 0)
+            else
             {
-                transform.Rotate(Vector3.forward);
+                transform.position += (d.speed + addedSpeed) * Time.deltaTime * Vector3.left;
+                if (Time.timeScale != 0)
+                {
+                    transform.Rotate(Vector3.forward);
+                }
             }
-        }
 
-        if (transform.position.x < -20.0f || transform.position.x > 20.0f)
-        {
-            Destroy(gameObject);
+            if (transform.position.x < -20.0f || transform.position.x > 20.0f)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
