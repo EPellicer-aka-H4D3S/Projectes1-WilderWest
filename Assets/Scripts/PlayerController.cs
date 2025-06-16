@@ -93,9 +93,8 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Attack(float timer)
     {
         animator.Play("squirrelAttack");
-        int temp = 8;
         yield return new WaitForSeconds(timer);
-        for (int i = 0; i < temp; i++)
+        for (int i = 0; i < 8; i++)
         {
             var hit = Physics2D.BoxCast(transform.position + Vector3.right*2f, new Vector2(1,2), 0.0f, transform.right, 3, LayerMask.GetMask("Hittable"));
             if (hit && hit.collider.tag.Equals("Dynamite"))
