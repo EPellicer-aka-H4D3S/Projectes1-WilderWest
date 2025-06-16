@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.D) && rigidBody.linearVelocity == Vector2.zero && !animator.GetCurrentAnimatorStateInfo(0).IsName("squirrelAttack"))
             {
-                StartCoroutine(Attack(0.35f));
+                StartCoroutine(Attack(21/(1.0f/Time.deltaTime)));
                 
             }
             //Dust particles control
@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
             {
                 AttackDynamite.Invoke();
             }
-            yield return new WaitForSeconds(0.133f);
+            yield return new WaitForSeconds(8/(1.0f/Time.deltaTime));
         }
     }
 
