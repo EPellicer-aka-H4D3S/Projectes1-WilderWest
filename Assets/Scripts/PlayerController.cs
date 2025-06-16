@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.D) && rigidBody.linearVelocity == Vector2.zero && !animator.GetCurrentAnimatorStateInfo(0).IsName("squirrelAttack"))
             {
-                StartCoroutine(Attack(21/(1.0f/Time.deltaTime)));
+                StartCoroutine(Attack(0.3f));
                 
             }
             //Dust particles control
@@ -96,12 +96,12 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(timer);
         for (int i = 0; i < 8; i++)
         {
-            var hit = Physics2D.BoxCast(transform.position + Vector3.right*2f, new Vector2(1,2), 0.0f, transform.right, 3, LayerMask.GetMask("Hittable"));
+            var hit = Physics2D.BoxCast(transform.position + Vector3.right*2f, new Vector2(1,2), 0.0f, transform.right, 1, LayerMask.GetMask("Hittable"));
             if (hit && hit.collider.tag.Equals("Dynamite"))
             {
                 AttackDynamite.Invoke();
             }
-            yield return new WaitForSeconds(8/(1.0f/Time.deltaTime));
+            yield return new WaitForSeconds(0.133f);
         }
     }
 
