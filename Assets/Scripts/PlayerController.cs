@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.D) && rigidBody.linearVelocity == Vector2.zero && !animator.GetCurrentAnimatorStateInfo(0).IsName("squirrelAttack"))
             {
-                StartCoroutine(Attack(0.23f));
+                StartCoroutine(Attack(0.35f));
                 
             }
             //Dust particles control
@@ -93,11 +93,17 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Attack(float timer)
     {
         animator.Play("squirrelAttack");
+        int temp = 8;
         yield return new WaitForSeconds(timer);
-        var hit = Physics2D.BoxCast(transform.position + Vector3.right*2.5f, new Vector2(2,2), 0.0f, transform.right, 3, LayerMask.GetMask("Hittable"));
-        if (hit && hit.collider.tag.Equals("Dynamite"))
+        for (int i = 0; i < temp; i++)
         {
-            AttackDynamite.Invoke();
+            var hit = Physics2D.BoxCast(transform.position + Vector3.right*2f, new Vector2(1,2), 0.0f, transform.right, 3, LayerMask.GetMask("Hittable"));
+            if (hit && hit.collider.tag.Equals("Dynamite"))
+            {
+                AttackDynamite.Invoke();
+            }
+            yield return new WaitForSeconds(0.133f);
+            temp--;
         }
     }
 
@@ -114,6 +120,6 @@ public class PlayerController : MonoBehaviour
         Gizmos.color = Color.white;
         Gizmos.DrawCube(groundCheckHB.position, groundCheckSize);
         Gizmos.color = Color.red;
-        Gizmos.DrawCube(transform.position+Vector3.right*2.5f, Vector2.one*2);
+        Gizmos.DrawCube(transform.position+Vector3.right*2f, new Vector2(1,2));
     }
 }

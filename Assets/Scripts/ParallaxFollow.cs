@@ -6,6 +6,6 @@ public class ParallaxFollow : MonoBehaviour
 
     void Update()
     {
-        transform.position = transform.position + d.speed * Time.deltaTime * Vector3.left;
+        transform.position += d.speed * Time.deltaTime * Vector3.left;
     }
 }
