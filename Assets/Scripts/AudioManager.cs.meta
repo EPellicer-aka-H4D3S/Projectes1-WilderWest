@@ -1,2 +1,18 @@
 fileFormatVersion: 2
 guid: 6e3af6628cf18ba468a1811b1bd40619
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - MusicSource: {instanceID: 0}
+  - EffectSource: {instanceID: 0}
+  - music: {fileID: 8300000, guid: df05ae3bf79f64a44b0d62fe5b73f665, type: 3}
+  - jump: {fileID: 8300000, guid: 72a0997b88dc38e4aa84220eca24d5b2, type: 3}
+  - nut: {fileID: 8300000, guid: 3dc8c937eef7be94fad3a417aaa3a7e7, type: 3}
+  - hit: {fileID: 8300000, guid: a6ea1fff169f98b42bf4e73c2482c77f, type: 3}
+  - death: {fileID: 8300000, guid: fc10e0ca6b46fdc46935798f9a79e7d1, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

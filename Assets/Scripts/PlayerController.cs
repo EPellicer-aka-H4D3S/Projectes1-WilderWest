@@ -5,7 +5,8 @@ using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 10.1f;
+    [SerializeField] private GameData d;
+    
     public Rigidbody2D rigidBody;
     public Collider2D collider;
 
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Time.timeScale != 0.0f)
         {
+            //Input control
             if (Input.GetKey(KeyCode.W) && IsGrounded() && rigidBody.linearVelocity.magnitude < 0.1f)
             {
                 Jump();
@@ -49,6 +51,7 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(Attack(0.23f));
                 
             }
+            //Dust particles control
             if (Mathf.Abs(rigidBody.linearVelocity.y) < 0.1f && dust.isStopped)
             {
                 dust.Play();
@@ -62,7 +65,7 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
-        rigidBody.linearVelocity = new Vector3(0,speed,0);
+        rigidBody.linearVelocity = new Vector3(0,d.jumpForce,0);
         audioManager.playEffect(audioManager.jump);
     }
 

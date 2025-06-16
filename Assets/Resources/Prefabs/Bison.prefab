@@ -236,7 +236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2fd5d5a1761ad44aad79c55c5d62048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 14
+  d: {fileID: 11400000, guid: 3a30d75ec7da1094ab4a88bc14fb58e8, type: 2}
+  addedSpeed: 6
   KillPlayer:
     m_PersistentCalls:
       m_Calls: []

@@ -5,12 +5,13 @@ public class Dynamite : MovableObject
 {
     public UnityEvent KillPlayer;
     public UnityEvent KillBandit;
+    
+    private Animator animator;
     private bool hitted = false;
-    private PlayerController playerController;
+    
 
     void Start()
     {
-        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         InvokeRepeating(nameof(AddListeners), 0.0f, 1.0f);
     }
 
@@ -31,7 +32,6 @@ public class Dynamite : MovableObject
     public void GetHit()
     {
         hitted = true;
-        speed = 20;
     }
 
     void AddListeners()
@@ -44,13 +44,19 @@ public class Dynamite : MovableObject
     {
         if (hitted)
         {
-            transform.position = transform.position + speed * Time.deltaTime * Vector3.right;
-            transform.Rotate(Vector3.forward*2);
+            transform.position += (d.speed + addedSpeed) * 2 * Time.deltaTime * Vector3.right;
+            if (Time.timeScale != 0)
+            {
+                transform.Rotate(Vector3.forward * 2);
+            }
         }
         else
         {
-            transform.position = transform.position + speed * Time.deltaTime * Vector3.left;
-            transform.Rotate(Vector3.forward);
+            transform.position += (d.speed + addedSpeed) * Time.deltaTime * Vector3.left;
+            if (Time.timeScale != 0)
+            {
+                transform.Rotate(Vector3.forward);
+            }
         }
 
         if (transform.position.x < -20.0f || transform.position.x > 20.0f)

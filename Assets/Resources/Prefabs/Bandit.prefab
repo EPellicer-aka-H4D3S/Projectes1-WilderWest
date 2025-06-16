@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 1010257160285905519}
   - component: {fileID: 3045061204112027250}
   - component: {fileID: 4295981125375573571}
-  - component: {fileID: 1007291397334293949}
   m_Layer: 0
   m_Name: Bandit
   m_TagString: Bandit
@@ -241,23 +240,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   dynamite: {fileID: 448756185938442579, guid: b0aeabaea70c47141bac4b75badad0b5, type: 3}
---- !u!111 &1007291397334293949
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 253203353484390072}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 7400000, guid: f74e1cef140798d4685bd3b819dddf69, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: f74e1cef140798d4685bd3b819dddf69, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_UpdateMode: 0
-  m_CullingType: 0
 --- !u!1001 &5036676236689253714
 PrefabInstance:
   m_ObjectHideFlags: 0

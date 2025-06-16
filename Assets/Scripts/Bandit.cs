@@ -42,9 +42,4 @@ public class Bandit : MonoBehaviour
         }
         
     }
-
-    void Update()
-    {
-
-    }
 }

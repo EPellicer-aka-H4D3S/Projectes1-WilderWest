@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d12b66779c3206e4d9c784b1e2a40dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 14.4
+  d: {fileID: 11400000, guid: 3a30d75ec7da1094ab4a88bc14fb58e8, type: 2}
   rigidBody: {fileID: 8182461709599973222}
   collider: {fileID: 9129311012320477392}
   groundCheckHB: {fileID: 6295038389004384985}

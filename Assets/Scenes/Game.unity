@@ -573,15 +573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89d72aabc04e1c3479c07d593fa0546f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  empty: {fileID: 8780658840911463047, guid: 0043673d5978a284f8676e54f4a4f35d, type: 3}
-  nuts: {fileID: 5162444189792296491, guid: d7e3692944a20c64e904214fcc883299, type: 3}
-  platform: {fileID: 6009270056072715214, guid: ca879f51e4e8b554eb694de6460b64f9, type: 3}
-  nplatform: {fileID: 7199402375487525610, guid: 33bd1b4fe61e73b44acbee964df23cb3, type: 3}
-  bison: {fileID: 253203353484390072, guid: c16f0501639533d458d520f5b76e1593, type: 3}
-  bulture: {fileID: 1671002009998926964, guid: 127801729d579714cad84ac9f8faaa5a, type: 3}
-  bandit: {fileID: 253203353484390072, guid: 0251a87c8747d294782c50e095d20898, type: 3}
-  cactus: {fileID: 448756185938442579, guid: bd39c3939d79c974fb9d5fb22e7a2e50, type: 3}
-  Chances: 1a000000330000004c000000
+  d: {fileID: 11400000, guid: 3a30d75ec7da1094ab4a88bc14fb58e8, type: 2}
   playerController: {fileID: 1186950574}
   scoreDisplay: {fileID: 627302723}
   textFinalScore: {fileID: 674019162}

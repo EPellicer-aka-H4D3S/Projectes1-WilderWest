@@ -1,2 +1,12 @@
 fileFormatVersion: 2
 guid: 80d35505e91c51c42952e1172b9630cb
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - dynamite: {fileID: 448756185938442579, guid: b0aeabaea70c47141bac4b75badad0b5, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
