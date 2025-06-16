@@ -32,7 +32,7 @@ public class GameController : MonoBehaviour
         prevP1 = d.empty;
         prevP2 = d.nuts;
 
-        InvokeRepeating(nameof(EnviromentSpawner), 4.0f, 1.0f);
+        InvokeRepeating(nameof(EnviromentSpawner), 4.0f, 8/d.speed);
         InvokeRepeating(nameof(EnemySpawner), 10.0f, 4.0f);
     }
     
