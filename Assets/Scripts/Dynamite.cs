@@ -2,9 +2,8 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Dynamite : MovableObject
+public class Dynamite : BasicEnemy
 {
-    public UnityEvent KillPlayer;
     public UnityEvent KillBandit;
     
     private Animator animator;
@@ -27,6 +26,7 @@ public class Dynamite : MovableObject
         if (collision.CompareTag("Player"))
         {
             KillPlayer.Invoke();
+            hurtBox.enabled = false;
             active = false;
             animator.Play("dynamiteExplosion");
             Destroy(gameObject,0.5f);

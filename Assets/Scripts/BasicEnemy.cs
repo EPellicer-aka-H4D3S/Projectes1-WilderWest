@@ -3,10 +3,12 @@ using UnityEngine.Events;
 
 public class BasicEnemy : MovableObject
 {
+    protected CircleCollider2D hurtBox;
     public UnityEvent KillPlayer;
 
     void Start()
     {
+        hurtBox = GetComponent<CircleCollider2D>();
         KillPlayer.AddListener(GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().KillPlayer);
     }
 
@@ -15,6 +17,7 @@ public class BasicEnemy : MovableObject
         if (collision.CompareTag("Player"))
         {
             KillPlayer.Invoke();
+            hurtBox.enabled = false;
         }
     }
 }
