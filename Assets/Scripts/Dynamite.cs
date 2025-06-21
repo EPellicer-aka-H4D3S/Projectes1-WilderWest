@@ -14,6 +14,7 @@ public class Dynamite : BasicEnemy
     void Start()
     {
         animator = GetComponent<Animator>();
+        hurtBox = GetComponent<CircleCollider2D>();
     }
 
     void Awake()
