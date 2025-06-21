@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,8 +14,12 @@ public class Dynamite : MovableObject
 
     void Start()
     {
-        InvokeRepeating(nameof(AddListeners), 0.0f, 1.0f);
         animator = GetComponent<Animator>();
+    }
+
+    void Awake()
+    {
+        Invoke(nameof(AddListeners),0.0f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
