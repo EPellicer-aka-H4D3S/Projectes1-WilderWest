@@ -20,8 +20,8 @@ MonoBehaviour:
   enemyUp: 6
   enemyMiddle: 1
   enemyDown: -4
-  timeScaling: 0.15
-  timeScalingMax: 2.1
+  timeScaling: 0.2
+  timeScalingMax: 2
   hitPenaltyBase: 10
   empty: {fileID: 8780658840911463047, guid: 0043673d5978a284f8676e54f4a4f35d, type: 3}
   nuts: {fileID: 5162444189792296491, guid: d7e3692944a20c64e904214fcc883299, type: 3}
