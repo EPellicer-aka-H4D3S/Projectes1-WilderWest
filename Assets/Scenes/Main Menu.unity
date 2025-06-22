@@ -534,6 +534,8 @@ MonoBehaviour:
   hit: {fileID: 8300000, guid: a6ea1fff169f98b42bf4e73c2482c77f, type: 3}
   death: {fileID: 8300000, guid: fc10e0ca6b46fdc46935798f9a79e7d1, type: 3}
   explosion: {fileID: 8300000, guid: 2d7d15ef54afdab408b079fcce606cb8, type: 3}
+  vulture: {fileID: 0}
+  bison: {fileID: 0}
 --- !u!4 &1005425961
 Transform:
   m_ObjectHideFlags: 0
@@ -939,7 +941,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1222107659}
   - component: {fileID: 1222107658}
-  - component: {fileID: 1222107657}
   - component: {fileID: 1222107660}
   m_Layer: 0
   m_Name: Main Camera
@@ -948,14 +949,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1222107657
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1222107656}
-  m_Enabled: 1
 --- !u!20 &1222107658
 Camera:
   m_ObjectHideFlags: 0
