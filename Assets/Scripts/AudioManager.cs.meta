@@ -11,6 +11,9 @@ MonoImporter:
   - nut: {fileID: 8300000, guid: 3dc8c937eef7be94fad3a417aaa3a7e7, type: 3}
   - hit: {fileID: 8300000, guid: a6ea1fff169f98b42bf4e73c2482c77f, type: 3}
   - death: {fileID: 8300000, guid: fc10e0ca6b46fdc46935798f9a79e7d1, type: 3}
+  - explosion: {fileID: 8300000, guid: 2d7d15ef54afdab408b079fcce606cb8, type: 3}
+  - vulture: {fileID: 8300000, guid: 7b64464f6d387c845bad3cc13f72ded0, type: 3}
+  - bison: {fileID: 8300000, guid: e29b243f07e2d3f479b884f3b0b69a00, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -10,6 +10,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip nut;
     public AudioClip hit;
     public AudioClip death;
+    public AudioClip explosion;
+    public AudioClip vulture;
+    public AudioClip bison;
 
     void Start()
     {

@@ -109,10 +109,12 @@ public class GameController : MonoBehaviour
                 if (UnityEngine.Random.Range(1,3)==1)
                 {
                     enemy  = d.bison;
+                    audioManager.playEffect(audioManager.bison);
                 }
                 else
                 {
                     enemy = d.bulture;
+                    audioManager.playEffect(audioManager.vulture);
                 }
 
                 if (playerController.transform.position.y > 5f && (prevP2.Equals(d.platform) || prevP2.Equals(d.nplatform)))

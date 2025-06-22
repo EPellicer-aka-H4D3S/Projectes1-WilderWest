@@ -5,7 +5,8 @@ using UnityEngine.Events;
 public class Dynamite : BasicEnemy
 {
     public UnityEvent KillBandit;
-    
+
+    private AudioManager audioManager;
     private Animator animator;
     private bool hitted = false;
     private bool active = true;
@@ -15,6 +16,7 @@ public class Dynamite : BasicEnemy
     {
         animator = GetComponent<Animator>();
         hurtBox = GetComponent<CircleCollider2D>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     void Awake()
@@ -30,6 +32,7 @@ public class Dynamite : BasicEnemy
             hurtBox.enabled = false;
             active = false;
             animator.Play("dynamiteExplosion");
+            audioManager.playEffect(audioManager.explosion);
             Destroy(gameObject,0.5f);
         }
         else if (collision.CompareTag("Bandit"))
@@ -37,6 +40,7 @@ public class Dynamite : BasicEnemy
             KillBandit.Invoke();
             active = false;
             animator.Play("dynamiteExplosion");
+            audioManager.playEffect(audioManager.explosion);
             Destroy(gameObject,0.5f);
         }
     }

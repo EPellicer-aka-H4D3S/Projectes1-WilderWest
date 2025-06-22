@@ -40,7 +40,9 @@ public class PlayerController : MonoBehaviour
             //Input control
             if (Input.GetKey(KeyCode.W) && IsGrounded() && rigidBody.linearVelocity.magnitude < 0.1f)
             {
+             
                 Jump();
+                
             }
             if (Input.GetKey(KeyCode.S) && transform.position.y > -3.5f && rigidBody.linearVelocity.magnitude < 0.1f)
             {
@@ -60,6 +62,9 @@ public class PlayerController : MonoBehaviour
             {
                 dust.Stop();
             }
+            animator.SetBool("IsJumping", !IsGrounded());
+            animator.SetFloat("YVelocity", rigidBody.linearVelocityY);
+
         }
     }
 
@@ -67,6 +72,7 @@ public class PlayerController : MonoBehaviour
     {
         rigidBody.linearVelocity = new Vector3(0,d.jumpForce,0);
         audioManager.playEffect(audioManager.jump);
+        
     }
 
     void Drop()
